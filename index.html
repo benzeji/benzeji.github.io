@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Yakutsk Games - Indie Game Developer</title>
+    <meta name="description" content="Yakutsk Games is an independent game studio creating indie games with engaging gameplay and memorable player experiences.">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body data-locale="en" data-news-limit="3">
+    <header class="site-header">
+      <nav class="nav container" aria-label="Main navigation">
+        <a class="brand" href="/#home" data-local-link="/#home">
+          <img src="/assets/mammoth-logo.png" alt="Yakutsk Games mammoth logo">
+          <span>Yakutsk <span class="accent">Games</span></span>
+        </a>
+        <div class="nav-actions">
+          <ul class="nav-links">
+            <li><a href="/#home" data-local-link="/#home" data-i18n="nav.home">Home</a></li>
+            <li><a href="/#games" data-local-link="/#games" data-i18n="nav.games">Our Games</a></li>
+            <li><a href="/#news" data-local-link="/#news" data-i18n="nav.news">News</a></li>
+            <li><a href="/#about" data-local-link="/#about" data-i18n="nav.about">About</a></li>
+          </ul>
+          <a class="lang-switch" href="?lang=ru"><img src="/flags/ru.svg" alt=""><span>ru</span></a>
+          <button class="menu-toggle" type="button" aria-label="Menu" aria-expanded="false">☰</button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section id="home" class="hero">
+        <img class="hero-bg" src="/assets/healthy-hero-banner.png" alt="Healthy Hero Tower Defense">
+        <div class="hero-content">
+          <p class="hero-tagline" data-i18n="hero.tagline">DEFEAT JUNK FOOD!</p>
+          <a class="button-hero" href="https://store.steampowered.com/app/3921280/Healthy_Hero__Tower_Defense/" target="_blank" rel="noopener noreferrer">
+            <span><span data-i18n="hero.wishlist">Add to your wishlist</span> ↗</span>
+          </a>
+        </div>
+      </section>
+
+      <section id="games" class="section section-light">
+        <div class="container">
+          <div class="section-heading-row">
+            <div>
+              <h2 class="section-title" data-i18n="games.title">Our Games</h2>
+              <p class="section-subtitle" data-i18n="games.subtitle">Here's some of our latest and most precious games.</p>
+            </div>
+          </div>
+          <div class="games-grid">
+            <a class="game-card" href="https://store.steampowered.com/app/3921280/Healthy_Hero__Tower_Defense/" target="_blank" rel="noopener noreferrer">
+              <div class="game-image-wrap">
+                <img src="/assets/healthy-hero-cover.png" alt="Healthy Hero - Tower Defense key art" loading="lazy">
+                <span class="status-pill" data-i18n="games.comingSoon">Coming Soon</span>
+                <h3 class="game-title">Healthy Hero - Tower Defense</h3>
+              </div>
+              <span class="game-arrow">›</span>
+            </a>
+          </div>
+          <div class="center-row">
+            <a class="button button-large" href="https://store.steampowered.com/developer/YakutskGames" target="_blank" rel="noopener noreferrer" data-i18n="games.viewAll">View all</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="news" class="section section-muted">
+        <div class="container">
+          <div class="section-heading-row align-start">
+            <div>
+              <h2 class="section-title" data-i18n="news.title">LATEST NEWS</h2>
+              <p class="section-subtitle" data-i18n="news.subtitle">All the latest news direct from the source... us!</p>
+            </div>
+            <a class="button" href="/news/" data-local-link="/news/" data-i18n="news.viewAll">All posts</a>
+          </div>
+          <div class="news-grid" data-news-grid></div>
+        </div>
+      </section>
+
+      <section id="about" class="about-section">
+        <div class="container">
+          <div class="about-copy">
+            <h2 class="section-title" data-i18n="about.title">So who are we?</h2>
+            <div class="about-text">
+              <p data-about-description1><strong>Yakutsk Games</strong> is an indie game developer. We develop games thoughtfully, allowing us to preserve the creative vision behind our projects without making unnecessary compromises.</p>
+              <p data-i18n="about.description2">We aim to create engaging, high-quality games that can capture players' interest, stand out through their atmosphere, and deliver a memorable gameplay experience. Our goal is to grow as creators and build projects we truly believe in.</p>
+            </div>
+          </div>
+          <div class="team-grid">
+            <div class="team-member">
+              <div class="avatar"><img src="/profile-logo.png" alt="Game Designer avatar"></div>
+              <h3 data-i18n="about.gameDesigner">Game Designer</h3>
+              <a class="handle" href="https://x.com/benzejiGames" target="_blank" rel="noopener noreferrer">@benzejiGames</a>
+            </div>
+            <div class="team-member">
+              <div class="avatar empty">?</div>
+              <h3 data-i18n="about.joinUs">Want to join us?</h3>
+              <p class="join-description" data-i18n="about.joinUsDescription">We're always looking out for new talent to join our expanding team.</p>
+              <a class="button" href="/careers/" data-local-link="/careers/" data-i18n="about.careers">Careers</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-main">
+          <div class="socials">
+            <a class="social youtube" href="https://www.youtube.com/@YakutskGames" target="_blank" rel="noopener noreferrer" aria-label="YouTube">▶<span class="tooltip" data-i18n="footer.youtube">YouTube</span></a>
+            <a class="social twitter" href="https://x.com/YakutskGamesHQ" target="_blank" rel="noopener noreferrer" aria-label="Twitter">𝕏<span class="tooltip" data-i18n="footer.twitter">Twitter</span></a>
+            <a class="social facebook" href="https://www.facebook.com/YakutskGames" target="_blank" rel="noopener noreferrer" aria-label="Facebook">f<span class="tooltip">Facebook</span></a>
+            <a class="social discord" href="https://discord.gg/CdshA6sRZ9" target="_blank" rel="noopener noreferrer" aria-label="Discord">◖◗<span class="tooltip" data-i18n="footer.discord">Discord</span></a>
+            <a class="social steam" href="https://store.steampowered.com/developer/YakutskGames" target="_blank" rel="noopener noreferrer" aria-label="Steam">●<span class="tooltip" data-i18n="footer.steam">Steam</span></a>
+            <a class="social email" href="mailto:contact@yakutskgames.com" aria-label="Email">@<span class="tooltip" data-i18n="footer.email">Email</span></a>
+          </div>
+          <nav class="footer-links">
+            <a class="footer-link" href="/privacy-policy/" data-local-link="/privacy-policy/" data-i18n="footer.privacyPolicy">Privacy Policy</a>
+            <a class="footer-link" href="/careers/" data-local-link="/careers/" data-i18n="footer.careers">Careers</a>
+            <a class="footer-link" href="/contact/" data-local-link="/contact/" data-i18n="footer.contact">Contact</a>
+          </nav>
+        </div>
+        <div class="footer-bottom"><span data-year-copy>© Yakutsk Games 2026 all rights reserved</span></div>
+      </div>
+    </footer>
+
+    <section class="cookie-banner" aria-label="Cookie notice">
+      <div class="cookie-inner">
+        <div class="cookie-copy">
+          <h2 data-i18n="cookies.title">We use cookies</h2>
+          <p data-i18n="cookies.description">Cookies help the website work correctly and improve the user experience. You can accept or decline optional cookies.</p>
+        </div>
+        <div class="cookie-actions">
+          <button class="cookie-btn" type="button" data-cookie-choice="declined" data-i18n="cookies.decline">Decline</button>
+          <button class="cookie-btn accept" type="button" data-cookie-choice="accepted" data-i18n="cookies.accept">Accept</button>
+        </div>
+      </div>
+    </section>
+    <script src="/news-data.js?v=static"></script>
+    <script src="/script.js?v=static"></script>
+  </body>
+</html>
