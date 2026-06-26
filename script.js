@@ -2,6 +2,7 @@ const STEAM_URL = "https://store.steampowered.com/app/3921280/Healthy_Hero__Towe
 const STEAM_DEVELOPER_URL = "https://store.steampowered.com/developer/YakutskGames";
 const STRAPI_BASE_URL = "https://passionate-nest-1a1217cae5.strapiapp.com";
 const STORAGE_KEY = "yakutsk-games-cookie-consent";
+const LOCALE_STORAGE_KEY = "yakutsk-games-locale";
 
 const translations = {
   en: {
@@ -194,34 +195,29 @@ const translations = {
   },
 };
 
-function getLocale() {
-  if (location.hostname === "yakutskgames.ru" || location.hostname.endsWith(".yakutskgames.ru")) {
-    return "ru";
-  }
-
-  if (location.hostname === "yakutskgames.com" || location.hostname.endsWith(".yakutskgames.com")) {
-    return "en";
-  }
-
-  const params = new URLSearchParams(window.location.search);
-  const requested = params.get("lang");
-  if (requested === "ru" || requested === "en") return requested;
-  return localStorage.getItem("yakutsk-games-locale") || "en";
+function isSupportedLocale(locale) {
+  return locale === "ru" || locale === "en";
 }
 
-function isProductionDomain() {
-  return (
-    location.hostname === "yakutskgames.ru" ||
-    location.hostname.endsWith(".yakutskgames.ru") ||
-    location.hostname === "yakutskgames.com" ||
-    location.hostname.endsWith(".yakutskgames.com")
-  );
+function getStoredLocale() {
+  const stored = localStorage.getItem(LOCALE_STORAGE_KEY);
+  return isSupportedLocale(stored) ? stored : null;
+}
+
+function getLocale() {
+  const params = new URLSearchParams(window.location.search);
+  const requested = params.get("lang");
+  if (isSupportedLocale(requested)) return requested;
+  return getStoredLocale() || "en";
 }
 
 function withLang(path) {
   const locale = getLocale();
-  if (isProductionDomain()) return path;
-  return locale === "en" ? path : `${path}${path.includes("?") ? "&" : "?"}lang=ru`;
+  if (locale === "en") return path;
+
+  const url = new URL(path, window.location.origin);
+  url.searchParams.set("lang", locale);
+  return `${url.pathname}${url.search}${url.hash}`;
 }
 
 function setText(selector, value) {
@@ -238,7 +234,7 @@ function setAttr(selector, attr, value) {
 
 function initLocale() {
   const locale = getLocale();
-  localStorage.setItem("yakutsk-games-locale", locale);
+  localStorage.setItem(LOCALE_STORAGE_KEY, locale);
   document.documentElement.lang = locale;
   document.body.dataset.locale = locale;
   const t = translations[locale];
@@ -266,19 +262,9 @@ function initLocale() {
   setAttr(".lang-switch img", "src", locale === "ru" ? "/flags/gb.svg" : "/flags/ru.svg");
   setText(".lang-switch span", locale === "ru" ? "en" : "ru");
   const targetLocale = locale === "ru" ? "en" : "ru";
-  const targetOrigin = targetLocale === "ru" ? "https://yakutskgames.ru" : "https://yakutskgames.com";
-
-  if (isProductionDomain()) {
-    setAttr(".lang-switch", "href", `${targetOrigin}${location.pathname}${location.hash}`);
-  } else {
-    const langUrl = new URL(window.location.href);
-    if (targetLocale === "en") {
-      langUrl.searchParams.delete("lang");
-    } else {
-      langUrl.searchParams.set("lang", "ru");
-    }
-    setAttr(".lang-switch", "href", langUrl.pathname + langUrl.search + langUrl.hash);
-  }
+  const langUrl = new URL(window.location.href);
+  langUrl.searchParams.set("lang", targetLocale);
+  setAttr(".lang-switch", "href", langUrl.pathname + langUrl.search + langUrl.hash);
   setAttr(".lang-switch", "title", targetLocale === "ru" ? "Русская версия" : "English version");
 
   document.querySelectorAll("[data-local-link]").forEach((el) => {
