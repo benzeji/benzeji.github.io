@@ -49,6 +49,18 @@ class BrandingManager {
 const translations = {
   en: {
     nav: { home: "Home", games: "Our Games", news: "News", about: "About" },
+    donate: {
+      button: "Donate",
+      title: "Donate",
+      description: "Choose a convenient way to support Benzeji Games.",
+      cloudtips: "Donate with a bank card",
+      crypto: "Cryptocurrency transfer",
+      network: "Network: ERC20",
+      copy: "Copy",
+      copied: "Address copied",
+      copyError: "Could not copy the address",
+      close: "Close",
+    },
     hero: { wishlist: "Add to your wishlist" },
     games: {
       title: "Our Games",
@@ -144,6 +156,18 @@ const translations = {
   },
   ru: {
     nav: { home: "Главная", games: "Наши игры", news: "Новости", about: "О нас" },
+    donate: {
+      button: "Donate",
+      title: "Поддержать",
+      description: "Выберите удобный способ поддержать Benzeji Games.",
+      cloudtips: "Поддержать банковской картой",
+      crypto: "Перевод в криптовалюте",
+      network: "Сеть: ERC20",
+      copy: "Копировать",
+      copied: "Адрес скопирован",
+      copyError: "Не удалось скопировать адрес",
+      close: "Закрыть",
+    },
     hero: { wishlist: "Добавить в список желаемого" },
     games: {
       title: "Наши игры",
@@ -323,16 +347,138 @@ function getValue(obj, path) {
 function initMenu() {
   const toggle = document.querySelector(".menu-toggle");
   if (!toggle) return;
+  const closeMenu = () => {
+    document.body.classList.remove("menu-open");
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.textContent = "☰";
+  };
   toggle.addEventListener("click", () => {
     document.body.classList.toggle("menu-open");
-    toggle.setAttribute("aria-expanded", String(document.body.classList.contains("menu-open")));
+    const isOpen = document.body.classList.contains("menu-open");
+    toggle.setAttribute("aria-expanded", String(isOpen));
+    toggle.textContent = isOpen ? "×" : "☰";
   });
   document.querySelectorAll(".nav-links a").forEach((link) => {
-    link.addEventListener("click", () => {
-      document.body.classList.remove("menu-open");
-      toggle.setAttribute("aria-expanded", "false");
-    });
+    link.addEventListener("click", closeMenu);
   });
+  document.addEventListener("click", (event) => {
+    if (!document.body.classList.contains("menu-open")) return;
+    if (event.target.closest(".nav-actions")) return;
+    closeMenu();
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeMenu();
+  });
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 860) closeMenu();
+  });
+}
+
+class DonateDialog {
+  constructor(dialog, openButtons, closeButton, copyButton, copyStatus, address) {
+    this.dialog = dialog;
+    this.openButtons = openButtons;
+    this.closeButton = closeButton;
+    this.copyButton = copyButton;
+    this.copyStatus = copyStatus;
+    this.address = address;
+    this.lastFocusedElement = null;
+  }
+
+  initialize() {
+    if (!this.dialog || !this.closeButton || !this.copyButton || !this.copyStatus) {
+      console.error("DonateDialog: required elements are not assigned.");
+      return;
+    }
+
+    this.openButtons.forEach((button) => button.addEventListener("click", () => this.open()));
+    this.closeButton.addEventListener("click", () => this.close());
+    this.copyButton.addEventListener("click", () => this.copyAddress());
+    this.dialog.addEventListener("click", (event) => {
+      if (event.target === this.dialog) this.close();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && this.dialog.classList.contains("visible")) this.close();
+    });
+  }
+
+  open() {
+    this.lastFocusedElement = document.activeElement;
+    this.dialog.classList.add("visible");
+    this.dialog.setAttribute("aria-hidden", "false");
+    document.body.classList.add("dialog-open");
+    this.closeButton.focus();
+  }
+
+  close() {
+    this.dialog.classList.remove("visible");
+    this.dialog.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("dialog-open");
+    this.copyStatus.textContent = "";
+    if (this.lastFocusedElement instanceof HTMLElement) this.lastFocusedElement.focus();
+  }
+
+  async copyAddress() {
+    const locale = getLocale();
+    try {
+      await navigator.clipboard.writeText(this.address);
+      this.copyStatus.textContent = translations[locale].donate.copied;
+    } catch (error) {
+      console.error("DonateDialog: could not copy the cryptocurrency address.", error);
+      this.copyStatus.textContent = translations[locale].donate.copyError;
+    }
+  }
+}
+
+function ensureDonateDialog() {
+  document.querySelectorAll(".nav-actions").forEach((navActions) => {
+    if (navActions.querySelector("[data-donate-open]")) return;
+    const languageSwitch = navActions.querySelector(".lang-switch");
+    if (!languageSwitch) {
+      console.error("DonateDialog: language switch anchor is not assigned.");
+      return;
+    }
+    languageSwitch.insertAdjacentHTML("beforebegin", '<button class="donate-trigger" type="button" data-donate-open data-i18n="donate.button">Donate</button>');
+  });
+
+  if (document.querySelector(".donate-modal")) return;
+  document.body.insertAdjacentHTML("beforeend", `
+    <section class="modal donate-modal" role="dialog" aria-modal="true" aria-labelledby="donate-title" aria-hidden="true">
+      <div class="donate-card">
+        <button class="donate-close" type="button" data-donate-close aria-label="Close">×</button>
+        <h2 id="donate-title" data-i18n="donate.title">Donate</h2>
+        <p class="donate-description" data-i18n="donate.description">Choose a convenient way to support Benzeji Games.</p>
+        <div class="donate-options">
+          <a class="donate-option cloudtips-option" href="https://pay.cloudtips.ru/p/be187661" target="_blank" rel="noopener noreferrer">
+            <span class="donate-option-label">CloudTips</span>
+            <span data-i18n="donate.cloudtips">Donate with a bank card</span>
+            <span class="donate-option-arrow" aria-hidden="true">↗</span>
+          </a>
+          <div class="donate-option crypto-option">
+            <span class="donate-option-label">USDT</span>
+            <span data-i18n="donate.crypto">Cryptocurrency transfer</span>
+            <span class="crypto-network" data-i18n="donate.network">Network: ERC20</span>
+            <div class="crypto-address-row">
+              <code>0x4ba4baa13d14a85cb2707d275c70d584b5042e0d</code>
+              <button class="copy-address" type="button" data-copy-address data-i18n="donate.copy">Copy</button>
+            </div>
+            <span class="copy-status" data-copy-status aria-live="polite"></span>
+          </div>
+        </div>
+      </div>
+    </section>`);
+}
+
+function initDonateDialog() {
+  const dialog = document.querySelector(".donate-modal");
+  const openButtons = document.querySelectorAll("[data-donate-open]");
+  const closeButton = document.querySelector("[data-donate-close]");
+  const copyButton = document.querySelector("[data-copy-address]");
+  const copyStatus = document.querySelector("[data-copy-status]");
+  const address = "0x4ba4baa13d14a85cb2707d275c70d584b5042e0d";
+  const donateDialog = new DonateDialog(dialog, openButtons, closeButton, copyButton, copyStatus, address);
+  donateDialog.initialize();
+  setAttr("[data-donate-close]", "aria-label", translations[getLocale()].donate.close);
 }
 
 function initCookies() {
@@ -568,9 +714,11 @@ function escapeHtml(value) {
 
 document.addEventListener("DOMContentLoaded", () => {
   new BrandingManager("Benzeji Games", "/assets/benzeji-mark.svg").apply();
+  ensureDonateDialog();
   initLocale();
   initSocialIcons();
   initMenu();
+  initDonateDialog();
   initCookies();
   initContactForm();
   renderNewsList(document.body.dataset.newsLimit ? Number(document.body.dataset.newsLimit) : undefined);

@@ -21,6 +21,7 @@
             <li><a href="/#news" data-local-link="/#news" data-i18n="nav.news">News</a></li>
             <li><a href="/#about" data-local-link="/#about" data-i18n="nav.about">About</a></li>
           </ul>
+          <button class="donate-trigger" type="button" data-donate-open data-i18n="donate.button">Donate</button>
           <a class="lang-switch" href="?lang=ru"><img src="/flags/ru.svg" alt=""><span>ru</span></a>
           <button class="menu-toggle" type="button" aria-label="Menu" aria-expanded="false">☰</button>
         </div>
@@ -121,6 +122,31 @@
         <div class="footer-bottom"><span data-year-copy>© Benzeji Games 2026 all rights reserved</span></div>
       </div>
     </footer>
+
+    <section class="modal donate-modal" role="dialog" aria-modal="true" aria-labelledby="donate-title" aria-hidden="true">
+      <div class="donate-card">
+        <button class="donate-close" type="button" data-donate-close aria-label="Close">×</button>
+        <h2 id="donate-title" data-i18n="donate.title">Donate</h2>
+        <p class="donate-description" data-i18n="donate.description">Choose a convenient way to support Benzeji Games.</p>
+        <div class="donate-options">
+          <a class="donate-option cloudtips-option" href="https://pay.cloudtips.ru/p/be187661" target="_blank" rel="noopener noreferrer">
+            <span class="donate-option-label">CloudTips</span>
+            <span data-i18n="donate.cloudtips">Donate with a bank card</span>
+            <span class="donate-option-arrow" aria-hidden="true">↗</span>
+          </a>
+          <div class="donate-option crypto-option">
+            <span class="donate-option-label">USDT</span>
+            <span data-i18n="donate.crypto">Cryptocurrency transfer</span>
+            <span class="crypto-network" data-i18n="donate.network">Network: ERC20</span>
+            <div class="crypto-address-row">
+              <code>0x4ba4baa13d14a85cb2707d275c70d584b5042e0d</code>
+              <button class="copy-address" type="button" data-copy-address data-i18n="donate.copy">Copy</button>
+            </div>
+            <span class="copy-status" data-copy-status aria-live="polite"></span>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <section class="cookie-banner" aria-label="Cookie notice">
       <div class="cookie-inner">
