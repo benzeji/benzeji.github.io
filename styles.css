@@ -1201,13 +1201,16 @@ body.dialog-open {
   color: #dfe3eb;
 }
 
-.cloudtips-option {
+.cloudtips-option,
+.boosty-option {
   padding-right: 58px;
   transition: border-color 0.18s ease, transform 0.18s ease;
 }
 
 .cloudtips-option:hover,
-.cloudtips-option:focus-visible {
+.cloudtips-option:focus-visible,
+.boosty-option:hover,
+.boosty-option:focus-visible {
   border-color: var(--brand-bear);
   transform: translateY(-2px);
 }

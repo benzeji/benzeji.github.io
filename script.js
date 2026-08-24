@@ -57,6 +57,7 @@ const translations = {
       title: "Donate",
       description: "Choose a convenient way to support Benzeji Games.",
       cloudtips: "Donate with a bank card",
+      boosty: "Donate with Visa, Mastercard or MIR",
       crypto: "Cryptocurrency transfer",
       network: "Network",
       copy: "Copy",
@@ -165,6 +166,7 @@ const translations = {
       title: "Поддержать",
       description: "Выберите удобный способ поддержать Benzeji Games.",
       cloudtips: "Поддержать банковской картой",
+      boosty: "Поддержать картой Visa, Mastercard или МИР",
       crypto: "Перевод в криптовалюте",
       network: "Сеть",
       copy: "Копировать",
@@ -459,6 +461,11 @@ function ensureDonateDialog() {
           <a class="donate-option cloudtips-option" href="https://pay.cloudtips.ru/p/be187661" target="_blank" rel="noopener noreferrer">
             <span class="donate-option-label">CloudTips</span>
             <span data-i18n="donate.cloudtips">Donate with a bank card</span>
+            <span class="donate-option-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="donate-option boosty-option" href="https://boosty.to/benzejigames/donate" target="_blank" rel="noopener noreferrer">
+            <span class="donate-option-label">Boosty</span>
+            <span data-i18n="donate.boosty">Donate with Visa, Mastercard or MIR</span>
             <span class="donate-option-arrow" aria-hidden="true">↗</span>
           </a>
           <div class="donate-option crypto-option">
