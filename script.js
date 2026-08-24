@@ -55,7 +55,7 @@ const translations = {
       description: "Choose a convenient way to support Benzeji Games.",
       cloudtips: "Donate with a bank card",
       crypto: "Cryptocurrency transfer",
-      network: "Network: ERC20",
+      network: "Network",
       copy: "Copy",
       copied: "Address copied",
       copyError: "Could not copy the address",
@@ -162,7 +162,7 @@ const translations = {
       description: "Выберите удобный способ поддержать Benzeji Games.",
       cloudtips: "Поддержать банковской картой",
       crypto: "Перевод в криптовалюте",
-      network: "Сеть: ERC20",
+      network: "Сеть",
       copy: "Копировать",
       copied: "Адрес скопирован",
       copyError: "Не удалось скопировать адрес",
@@ -457,7 +457,7 @@ function ensureDonateDialog() {
           <div class="donate-option crypto-option">
             <span class="donate-option-label">USDT</span>
             <span data-i18n="donate.crypto">Cryptocurrency transfer</span>
-            <span class="crypto-network" data-i18n="donate.network">Network: ERC20</span>
+            <span class="crypto-network"><span data-i18n="donate.network">Network</span><strong>ERC20</strong></span>
             <div class="crypto-address-row">
               <code>0x4ba4baa13d14a85cb2707d275c70d584b5042e0d</code>
               <button class="copy-address" type="button" data-copy-address data-i18n="donate.copy">Copy</button>
