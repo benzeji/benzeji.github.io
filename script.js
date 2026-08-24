@@ -1,13 +1,55 @@
-const STEAM_URL = "https://store.steampowered.com/app/3921280/Healthy_Hero__Tower_Defense/";
-const STEAM_DEVELOPER_URL = "https://store.steampowered.com/developer/YakutskGames";
+const STEAM_URL = "https://store.steampowered.com/app/3921280/Project_Zarya/";
+const STEAM_DEVELOPER_URL = "https://store.steampowered.com/developer/benzejiGames";
 const STRAPI_BASE_URL = "https://passionate-nest-1a1217cae5.strapiapp.com";
-const STORAGE_KEY = "yakutsk-games-cookie-consent";
-const LOCALE_STORAGE_KEY = "yakutsk-games-locale";
+const CONTACT_EMAIL = "contact@benzejigames.xyz";
+const STORAGE_KEY = "benzeji-games-cookie-consent";
+const LOCALE_STORAGE_KEY = "benzeji-games-locale";
+
+class BrandingManager {
+  constructor(name, markPath) {
+    this.name = name;
+    this.markPath = markPath;
+  }
+
+  apply() {
+    document.title = document.title.replaceAll("Yakutsk Games", this.name);
+    document.querySelectorAll('link[rel="icon"]').forEach((icon) => { icon.href = this.markPath; });
+    document.querySelectorAll('a[href^="mailto:"]').forEach((link) => {
+      const subject = new URL(link.href).search;
+      link.href = `mailto:${CONTACT_EMAIL}${subject}`;
+      if (link.textContent.trim().includes("@")) link.textContent = CONTACT_EMAIL;
+    });
+    document.querySelectorAll(".brand").forEach((brand) => {
+      const image = brand.querySelector("img");
+      image?.remove();
+      const label = brand.querySelector("span");
+      if (label) label.innerHTML = `Benzeji <span class="accent">Games</span>`;
+    });
+
+    const socialLinks = {
+      youtube: "https://www.youtube.com/@BenzejiGames",
+      twitter: "https://x.com/benzejiGames",
+      discord: "https://discord.gg/ThkzJvhSUg",
+      steam: STEAM_DEVELOPER_URL,
+      vk: "https://vk.ru/projectzarya_game",
+    };
+    document.querySelectorAll(".social.email").forEach((link) => {
+      link.classList.replace("email", "vk");
+    });
+    Object.entries(socialLinks).forEach(([network, url]) => {
+      document.querySelectorAll(`.social.${network}`).forEach((link) => {
+        link.href = url;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+      });
+    });
+  }
+}
 
 const translations = {
   en: {
     nav: { home: "Home", games: "Our Games", news: "News", about: "About" },
-    hero: { tagline: "DEFEAT JUNK FOOD!", wishlist: "Add to your wishlist" },
+    hero: { wishlist: "Add to your wishlist" },
     games: {
       title: "Our Games",
       subtitle: "Here's some of our latest and most precious games.",
@@ -27,7 +69,7 @@ const translations = {
     },
     about: {
       title: "So who are we?",
-      description1: "Yakutsk Games is an indie game developer. We develop games thoughtfully, allowing us to preserve the creative vision behind our projects without making unnecessary compromises.",
+      description1: "Benzeji Games is an indie game developer. We develop games thoughtfully, allowing us to preserve the creative vision behind our projects without making unnecessary compromises.",
       description2: "We aim to create engaging, high-quality games that can capture players' interest, stand out through their atmosphere, and deliver a memorable gameplay experience. Our goal is to grow as creators and build projects we truly believe in.",
       gameDesigner: "Game Designer",
       joinUs: "Want to join us?",
@@ -35,7 +77,7 @@ const translations = {
       careers: "Careers",
     },
     footer: {
-      copyright: "© Yakutsk Games {year} all rights reserved",
+      copyright: "© Benzeji Games {year} all rights reserved",
       youtube: "YouTube",
       twitter: "Twitter",
       tiktok: "TikTok",
@@ -72,7 +114,7 @@ const translations = {
     },
     careers: {
       title: "Careers",
-      subtitle: "Interested in working with Yakutsk Games? Send a short intro and links to your work. If there's a match, we'll reach out.",
+      subtitle: "Interested in working with Benzeji Games? Send a short intro and links to your work. If there's a match, we'll reach out.",
       contactForm: "Contact form",
       whatToInclude: "What to include",
       role: "Role you're aiming for (art / design / engineering / production).",
@@ -88,7 +130,7 @@ const translations = {
     },
     privacy: {
       title: "Privacy Policy",
-      subtitle: "How Yakutsk Games handles information on this website.",
+      subtitle: "How Benzeji Games handles information on this website.",
       updated: "Last updated: May 31, 2026",
       contact: "For privacy questions, contact us at",
       sections: [
@@ -102,7 +144,7 @@ const translations = {
   },
   ru: {
     nav: { home: "Главная", games: "Наши игры", news: "Новости", about: "О нас" },
-    hero: { tagline: "ПОБЕДИ ФАСТФУД!", wishlist: "Добавить в список желаемого" },
+    hero: { wishlist: "Добавить в список желаемого" },
     games: {
       title: "Наши игры",
       subtitle: "Вот некоторые из наших последних и самых ценных игр.",
@@ -122,7 +164,7 @@ const translations = {
     },
     about: {
       title: "Кто мы такие?",
-      description1: "Yakutsk Games — инди-разработчик игр. Мы разрабатываем игры вдумчиво, что позволяет нам сохранять творческое видение наших проектов без лишних компромиссов.",
+      description1: "Benzeji Games — инди-разработчик игр. Мы разрабатываем игры вдумчиво, что позволяет нам сохранять творческое видение наших проектов без лишних компромиссов.",
       description2: "Мы стремимся создавать увлекательные, качественные игры, которые могут заинтересовать игроков, выделиться своей атмосферой и подарить запоминающийся игровой опыт. Наша цель — расти как создатели и строить проекты, в которые мы действительно верим.",
       gameDesigner: "Геймдизайнер",
       joinUs: "Хотите присоединиться?",
@@ -130,7 +172,7 @@ const translations = {
       careers: "Карьера",
     },
     footer: {
-      copyright: "© Yakutsk Games {year} все права защищены",
+      copyright: "© Benzeji Games {year} все права защищены",
       youtube: "YouTube",
       twitter: "Twitter",
       tiktok: "TikTok",
@@ -167,7 +209,7 @@ const translations = {
     },
     careers: {
       title: "Карьера",
-      subtitle: "Хотите работать в Yakutsk Games? Отправьте короткое представление и ссылки на ваши работы. Если мы подойдем друг другу, мы свяжемся с вами.",
+      subtitle: "Хотите работать в Benzeji Games? Отправьте короткое представление и ссылки на ваши работы. Если мы подойдем друг другу, мы свяжемся с вами.",
       contactForm: "Форма связи",
       whatToInclude: "Что указать",
       role: "Желаемая роль (арт / дизайн / разработка / продюсирование).",
@@ -183,7 +225,7 @@ const translations = {
     },
     privacy: {
       title: "Политика конфиденциальности",
-      subtitle: "Как Yakutsk Games обрабатывает информацию на этом сайте.",
+      subtitle: "Как Benzeji Games обрабатывает информацию на этом сайте.",
       updated: "Обновлено: 31 мая 2026",
       contact: "По вопросам конфиденциальности напишите нам на",
       sections: [
@@ -253,7 +295,7 @@ function initLocale() {
 
   document.querySelectorAll("[data-about-description1]").forEach((el) => {
     const description = t.about.description1;
-    const brand = "Yakutsk Games";
+    const brand = "Benzeji Games";
     const index = description.indexOf(brand);
     el.innerHTML = index >= 0
       ? `${escapeHtml(description.slice(0, index))}<strong>${brand}</strong>${escapeHtml(description.slice(index + brand.length))}`
@@ -315,7 +357,7 @@ function initSocialIcons() {
     tiktok: { src: "/assets/social/tiktok.svg", label: footer.tiktok },
     discord: { src: "/assets/social/discord.svg", label: footer.discord },
     steam: { src: "/assets/social/steam.svg", label: footer.steam },
-    email: { src: "/assets/social/email.svg", label: footer.email },
+    vk: { src: "/assets/social/vk.svg", label: "VK" },
   };
 
   Object.entries(icons).forEach(([className, icon]) => {
@@ -356,7 +398,7 @@ function initContactForm() {
     submit.textContent = translations[locale].contact.sending;
     submit.disabled = true;
     try {
-      const response = await fetch("https://formspree.io/f/meedgrzj", {
+      const response = await fetch(form.action || "https://formspree.io/f/mrpzwpwb", {
         method: "POST",
         body: new FormData(form),
         headers: { Accept: "application/json" },
@@ -365,7 +407,7 @@ function initContactForm() {
       form.reset();
       modal?.classList.add("visible");
     } catch (error) {
-      window.location.href = "mailto:contact@yakutskgames.com";
+      window.location.href = `mailto:${CONTACT_EMAIL}`;
     } finally {
       submit.textContent = translations[locale].contact.send;
       submit.disabled = false;
@@ -525,6 +567,7 @@ function escapeHtml(value) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  new BrandingManager("Benzeji Games", "/assets/benzeji-mark.svg").apply();
   initLocale();
   initSocialIcons();
   initMenu();

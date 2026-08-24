@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Benzeji Games</title>
+  <defs><linearGradient id="g" x1="8" y1="5" x2="57" y2="59" gradientUnits="userSpaceOnUse"><stop stop-color="#BF4342"/><stop offset=".52" stop-color="#E16A69"/><stop offset="1" stop-color="#7D2731"/></linearGradient></defs>
+  <path fill="#0B0D12" d="M12 4h31l9 9v13l-6 6 8 8v11l-9 9H12L5 53V11z"/>
+  <path fill="url(#g)" d="M16 12h24l5 5v8l-5 5H16zm0 24h27l4 4v7l-5 5H16zm8-16v4h13l2-2-2-2zm0 24v4h15l2-2-2-2z"/>
+</svg>
