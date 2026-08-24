@@ -31,10 +31,13 @@ class BrandingManager {
       twitter: "https://x.com/benzejiGames",
       discord: "https://discord.gg/ThkzJvhSUg",
       steam: STEAM_DEVELOPER_URL,
-      vk: "https://vk.ru/projectzarya_game",
+      boosty: "https://boosty.to/benzejigames",
     };
     document.querySelectorAll(".social.email").forEach((link) => {
-      link.classList.replace("email", "vk");
+      link.classList.replace("email", "boosty");
+    });
+    document.querySelectorAll(".social.vk").forEach((link) => {
+      link.classList.replace("vk", "boosty");
     });
     Object.entries(socialLinks).forEach(([network, url]) => {
       document.querySelectorAll(`.social.${network}`).forEach((link) => {
@@ -91,7 +94,8 @@ const translations = {
     footer: {
       copyright: "© Benzeji Games {year} all rights reserved",
       youtube: "YouTube",
-      twitter: "Twitter",
+      twitter: "X",
+      bluesky: "Bluesky",
       tiktok: "TikTok",
       discord: "Discord",
       steam: "Steam",
@@ -198,7 +202,8 @@ const translations = {
     footer: {
       copyright: "© Benzeji Games {year} все права защищены",
       youtube: "YouTube",
-      twitter: "Twitter",
+      twitter: "X",
+      bluesky: "Bluesky",
       tiktok: "TikTok",
       discord: "Discord",
       steam: "Steam",
@@ -336,7 +341,9 @@ function initLocale() {
   setAttr(".lang-switch", "title", targetLocale === "ru" ? "Русская версия" : "English version");
 
   document.querySelectorAll("[data-local-link]").forEach((el) => {
-    el.setAttribute("href", withLang(el.getAttribute("data-local-link")));
+    const localPath = el.getAttribute("data-local-link");
+    const normalizedPath = localPath === "/#home" ? "/" : localPath;
+    el.setAttribute("href", withLang(normalizedPath));
   });
 }
 
@@ -459,7 +466,7 @@ function ensureDonateDialog() {
             <span data-i18n="donate.crypto">Cryptocurrency transfer</span>
             <span class="crypto-network"><span data-i18n="donate.network">Network</span><strong>ERC20</strong></span>
             <div class="crypto-address-row">
-              <code>0x4ba4baa13d14a85cb2707d275c70d584b5042e0d</code>
+              <code>0xd34bB384031993916893C4463402AAB5E770d160</code>
               <button class="copy-address" type="button" data-copy-address data-i18n="donate.copy">Copy</button>
             </div>
             <span class="copy-status" data-copy-status aria-live="polite"></span>
@@ -475,7 +482,7 @@ function initDonateDialog() {
   const closeButton = document.querySelector("[data-donate-close]");
   const copyButton = document.querySelector("[data-copy-address]");
   const copyStatus = document.querySelector("[data-copy-status]");
-  const address = "0x4ba4baa13d14a85cb2707d275c70d584b5042e0d";
+  const address = "0xd34bB384031993916893C4463402AAB5E770d160";
   const donateDialog = new DonateDialog(dialog, openButtons, closeButton, copyButton, copyStatus, address);
   donateDialog.initialize();
   setAttr("[data-donate-close]", "aria-label", translations[getLocale()].donate.close);
@@ -497,13 +504,23 @@ function initCookies() {
 function initSocialIcons() {
   const locale = getLocale();
   const footer = translations[locale].footer;
+  document.querySelectorAll(".socials").forEach((socials) => {
+    if (socials.querySelector(".social.bluesky")) return;
+    const twitterLink = socials.querySelector(".social.twitter");
+    if (!twitterLink) {
+      console.error("Social links: X link is not assigned.");
+      return;
+    }
+    twitterLink.insertAdjacentHTML("afterend", '<a class="social bluesky" href="https://bsky.app/profile/benzejigames.bsky.social" target="_blank" rel="noopener noreferrer" aria-label="Bluesky"><img src="/assets/social/bluesky.svg" alt=""><span class="tooltip">Bluesky</span></a>');
+  });
   const icons = {
     youtube: { src: "/assets/social/youtube.svg", label: footer.youtube },
     twitter: { src: "/assets/social/x.svg", label: footer.twitter },
+    bluesky: { src: "/assets/social/bluesky.svg", label: footer.bluesky },
     tiktok: { src: "/assets/social/tiktok.svg", label: footer.tiktok },
     discord: { src: "/assets/social/discord.svg", label: footer.discord },
     steam: { src: "/assets/social/steam.svg", label: footer.steam },
-    vk: { src: "/assets/social/vk.svg", label: "VK" },
+    boosty: { src: "/assets/social/boosty.svg", label: "Boosty" },
   };
 
   Object.entries(icons).forEach(([className, icon]) => {
@@ -614,8 +631,9 @@ async function getArticles(locale) {
 
 function articleCard(article, locale) {
   const t = translations[locale].news;
+  const supportClass = article.pinned ? " support-news-card" : "";
   return `
-    <a href="${withLang(`/news/post.html?slug=${encodeURIComponent(article.slug)}`)}" class="news-card">
+    <a href="${withLang(`/news/post.html?slug=${encodeURIComponent(article.slug)}`)}" class="news-card${supportClass}">
       <div class="news-card-image">
         <img src="${mediaUrl(article.cover, "medium")}" alt="${article.cover?.alternativeText || ""}" loading="lazy">
         <div class="news-labels">
@@ -636,7 +654,13 @@ async function renderNewsList(limit) {
   if (!grid) return;
   const locale = getLocale();
   const articles = (await getArticles(locale))
-    .sort((a, b) => String(b.publishedAt || "").localeCompare(String(a.publishedAt || "")))
+    .sort((a, b) => {
+      if (Number.isFinite(a.displayOrder) || Number.isFinite(b.displayOrder)) {
+        return (a.displayOrder ?? Number.MAX_SAFE_INTEGER) - (b.displayOrder ?? Number.MAX_SAFE_INTEGER);
+      }
+      if (Boolean(a.pinned) !== Boolean(b.pinned)) return a.pinned ? -1 : 1;
+      return String(b.publishedAt || "").localeCompare(String(a.publishedAt || ""));
+    })
     .slice(0, limit || undefined);
   grid.innerHTML = articles.length
     ? articles.map((article) => articleCard(article, locale)).join("")
@@ -644,6 +668,26 @@ async function renderNewsList(limit) {
 }
 
 function blockToHtml(block) {
+  if (Array.isArray(block.items) && block.items.length) {
+    const listTitle = block.title ? `<h2>${escapeHtml(block.title)}</h2>` : "";
+    const items = block.items
+      .map((item) => `<li>${inlineMarkdown(escapeHtml(item))}</li>`)
+      .join("");
+    return `<section class="post-list">${listTitle}<ul>${items}</ul></section>`;
+  }
+  if (typeof block.youtubeId === "string" && /^[a-zA-Z0-9_-]{11}$/.test(block.youtubeId)) {
+    const videoTitle = escapeHtml(block.title || "YouTube video");
+    return `
+      <div class="video-embed">
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/${block.youtubeId}"
+          title="${videoTitle}"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen></iframe>
+      </div>`;
+  }
   const body = typeof block.body === "string" ? block.body : block.text || "";
   if (!body) return "";
   return body
