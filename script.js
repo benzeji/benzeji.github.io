@@ -65,7 +65,10 @@ const translations = {
       copyError: "Could not copy the address",
       close: "Close",
     },
-    hero: { wishlist: "Add to your wishlist" },
+    hero: {
+      description: "Open-world survival in post-apocalyptic Russia. Explore, gather resources, build, craft, and fight the infected alone or with friends.",
+      wishlist: "Add to your wishlist",
+    },
     games: {
       title: "Our Games",
       subtitle: "Here's some of our latest and most precious games.",
@@ -174,7 +177,10 @@ const translations = {
       copyError: "Не удалось скопировать адрес",
       close: "Закрыть",
     },
-    hero: { wishlist: "Добавить в список желаемого" },
+    hero: {
+      description: "Выживание в открытом мире постапокалиптической России. Исследуйте, собирайте ресурсы, стройте, создавайте снаряжение и сражайтесь с заражёнными в одиночку или с друзьями.",
+      wishlist: "Добавить в список желаемого",
+    },
     games: {
       title: "Наши игры",
       subtitle: "Вот некоторые из наших последних и самых ценных игр.",
