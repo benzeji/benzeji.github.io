@@ -1443,7 +1443,7 @@ body.dialog-open {
 .social.discord:hover { background: #5865f2; }
 .social.steam:hover { background: #171d25; }
 .social.email:hover { background: var(--brand-bear); }
-.social.boosty:hover { background: #f15f2c; }
+.social.fandom:hover { background: #520044; }
 
 .tooltip {
   position: absolute;

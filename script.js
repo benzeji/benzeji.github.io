@@ -31,13 +31,16 @@ class BrandingManager {
       twitter: "https://x.com/benzejiGames",
       discord: "https://discord.gg/ThkzJvhSUg",
       steam: STEAM_DEVELOPER_URL,
-      boosty: "https://boosty.to/benzejigames",
+      fandom: "https://project-zarya.fandom.com/wiki/Project_Zarya_Wiki",
     };
     document.querySelectorAll(".social.email").forEach((link) => {
-      link.classList.replace("email", "boosty");
+      link.classList.replace("email", "fandom");
     });
     document.querySelectorAll(".social.vk").forEach((link) => {
-      link.classList.replace("vk", "boosty");
+      link.classList.replace("vk", "fandom");
+    });
+    document.querySelectorAll(".social.boosty").forEach((link) => {
+      link.classList.replace("boosty", "fandom");
     });
     Object.entries(socialLinks).forEach(([network, url]) => {
       document.querySelectorAll(`.social.${network}`).forEach((link) => {
@@ -533,7 +536,7 @@ function initSocialIcons() {
     tiktok: { src: "/assets/social/tiktok.svg", label: footer.tiktok },
     discord: { src: "/assets/social/discord.svg", label: footer.discord },
     steam: { src: "/assets/social/steam.svg", label: footer.steam },
-    boosty: { src: "/assets/social/boosty.svg", label: "Boosty" },
+    fandom: { src: "/assets/social/fandom.svg", label: "Fandom" },
   };
 
   Object.entries(icons).forEach(([className, icon]) => {
