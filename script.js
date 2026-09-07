@@ -54,7 +54,7 @@ class BrandingManager {
 
 const translations = {
   en: {
-    nav: { home: "Home", games: "Our Games", news: "News", about: "About" },
+    nav: { home: "Home", games: "Our Games", news: "News", about: "About Me" },
     donate: {
       button: "Donate",
       title: "Donate",
@@ -118,8 +118,8 @@ const translations = {
       accept: "Accept",
     },
     contact: {
-      title: "Contact Us",
-      subtitle: "Have a question, partnership idea, or press inquiry? We'd love to hear from you.",
+      title: "Contact Me",
+      subtitle: "Have a question, partnership idea, or press inquiry? I'd love to hear from you.",
       name: "Name",
       namePlaceholder: "Your name",
       email: "Email",
@@ -133,11 +133,11 @@ const translations = {
       thanks: "Thanks!",
       thanksMessage: "Your message has been sent. We'll get back to you soon.",
       close: "Close",
-      orEmail: "Or reach us directly at",
+      orEmail: "Or email me directly at",
     },
     careers: {
       title: "Careers",
-      subtitle: "Interested in working with Benzeji Games? Send a short intro and links to your work. If there's a match, we'll reach out.",
+      subtitle: "Interested in working with Benzeji Games? This is a passion project, and participation is voluntary and unpaid. Send a short intro and links to your work. If there's a match, I'll get in touch with you.",
       contactForm: "Contact form",
       whatToInclude: "What to include",
       role: "Role you're aiming for (art / design / engineering / production).",
@@ -166,7 +166,7 @@ const translations = {
     },
   },
   ru: {
-    nav: { home: "Главная", games: "Наши игры", news: "Новости", about: "О нас" },
+    nav: { home: "Главная", games: "Наши игры", news: "Новости", about: "Обо мне" },
     donate: {
       button: "Donate",
       title: "Поддержать",
@@ -230,8 +230,8 @@ const translations = {
       accept: "Принять",
     },
     contact: {
-      title: "Свяжитесь с нами",
-      subtitle: "Есть вопрос, идея сотрудничества или запрос от прессы? Мы будем рады услышать вас.",
+      title: "Свяжитесь со мной",
+      subtitle: "Есть вопрос, идея сотрудничества или запрос от прессы? Я буду рад услышать вас.",
       name: "Имя",
       namePlaceholder: "Ваше имя",
       email: "Электронная почта",
@@ -245,11 +245,11 @@ const translations = {
       thanks: "Спасибо!",
       thanksMessage: "Ваше сообщение отправлено. Мы свяжемся с вами в ближайшее время.",
       close: "Закрыть",
-      orEmail: "Или напишите нам напрямую",
+      orEmail: "Или напишите мне напрямую",
     },
     careers: {
       title: "Карьера",
-      subtitle: "Хотите работать в Benzeji Games? Отправьте короткое представление и ссылки на ваши работы. Если мы подойдем друг другу, мы свяжемся с вами.",
+      subtitle: "Хотите работать в Benzeji Games? Работа над проектом ведётся на энтузиазме — участие добровольное и без оплаты. Отправьте короткое представление и ссылки на ваши работы. Если мы подойдём друг другу, я свяжусь с вами.",
       contactForm: "Форма связи",
       whatToInclude: "Что указать",
       role: "Желаемая роль (арт / дизайн / разработка / продюсирование).",
@@ -284,8 +284,84 @@ function isSupportedLocale(locale) {
 }
 
 function getStoredLocale() {
-  const stored = localStorage.getItem(LOCALE_STORAGE_KEY);
-  return isSupportedLocale(stored) ? stored : null;
+  try {
+    const stored = localStorage.getItem(LOCALE_STORAGE_KEY);
+    return isSupportedLocale(stored) ? stored : null;
+  } catch {
+    return null;
+  }
+}
+
+function storeLocale(locale) {
+  try {
+    localStorage.setItem(LOCALE_STORAGE_KEY, locale);
+  } catch {
+    // URL-based language selection still works when storage is unavailable.
+  }
+}
+
+class CountryLanguageSuggestion {
+  constructor(container, request) {
+    this.container = container;
+    this.request = request;
+    // Regional language grouping, including associated and former CIS countries.
+    this.russianCountries = new Set(["AM", "AZ", "BY", "KG", "KZ", "MD", "RU", "TJ", "TM", "UZ", "UA"]);
+  }
+
+  async initialize() {
+    if (!this.container || typeof this.request !== "function") {
+      console.error("CountryLanguageSuggestion: container and request function are required.");
+      return;
+    }
+    if (getStoredLocale() || isSupportedLocale(new URLSearchParams(window.location.search).get("lang"))) return;
+
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 4000);
+    try {
+      const response = await this.request("https://api.country.is/", {
+        signal: controller.signal, credentials: "omit", referrerPolicy: "no-referrer",
+      });
+      if (!response.ok) return;
+      const data = await response.json();
+      if (typeof data.country !== "string" || !/^[A-Z]{2}$/.test(data.country)) return;
+      if (getStoredLocale()) return;
+      this.show(this.russianCountries.has(data.country) ? "ru" : "en");
+    } catch {
+      // Geolocation must never prevent the site from loading.
+    } finally {
+      clearTimeout(timeout);
+    }
+  }
+
+  show(locale) {
+    const banner = document.createElement("section");
+    banner.className = "language-suggestion";
+    banner.lang = locale;
+    banner.setAttribute("aria-label", locale === "ru" ? "Выбор языка" : "Language preference");
+    const message = document.createElement("p");
+    message.textContent = locale === "ru"
+      ? "Для вашей страны рекомендуем русский язык. Переключить сайт на русский?"
+      : "We recommend English for your country. Use English?";
+    banner.append(message);
+    const choices = locale === "ru"
+      ? [["ru", "Да, русский"], ["en", "Keep English"]]
+      : [["en", "Use English"], ["ru", "Русский"]];
+    for (const [choice, label] of choices) {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "button";
+      button.textContent = label;
+      button.addEventListener("click", () => {
+        storeLocale(choice);
+        banner.remove();
+        const url = new URL(window.location.href);
+        url.searchParams.set("lang", choice);
+        window.location.assign(url.href);
+      });
+      banner.append(button);
+    }
+    this.container.prepend(banner);
+  }
 }
 
 function getLocale() {
@@ -318,7 +394,7 @@ function setAttr(selector, attr, value) {
 
 function initLocale() {
   const locale = getLocale();
-  localStorage.setItem(LOCALE_STORAGE_KEY, locale);
+  if (isSupportedLocale(new URLSearchParams(window.location.search).get("lang"))) storeLocale(locale);
   document.documentElement.lang = locale;
   document.body.dataset.locale = locale;
   const t = translations[locale];
@@ -564,6 +640,7 @@ function ensureCookieBanner() {
     </section>
   `);
   initLocale();
+  new CountryLanguageSuggestion(document.querySelector("main"), window.fetch.bind(window)).initialize();
 }
 
 function initContactForm() {

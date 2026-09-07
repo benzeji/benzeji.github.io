@@ -2008,3 +2008,16 @@ body .news-card.support-news-card .button {
 .nav-links li:has(> [data-i18n="nav.games"]) {
   display: none;
 }
+.language-suggestion {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 24px;
+  background: #171b23;
+  color: #fff;
+  border-bottom: 1px solid #343943;
+}
+.language-suggestion p { margin: 0; flex: 1 1 280px; }
+.language-suggestion .button { cursor: pointer; }
