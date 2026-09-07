@@ -137,7 +137,8 @@ const translations = {
     },
     careers: {
       title: "Join the Team",
-      subtitle: "Want to be part of Benzeji Games? This is a passion project, and participation is voluntary and unpaid. Send a short intro and links to your work. If there's a match, I'll get in touch with you.",
+      subtitle: "I'm looking for people who want to help develop the game. Participation is voluntary and unpaid.",
+      invitation: "Tell me a little about yourself and share links to your work. If there's a match, I'll get in touch.",
       contactForm: "Contact form",
       whatToInclude: "What to include",
       role: "Role you're aiming for (art / design / engineering / production).",
@@ -203,7 +204,7 @@ const translations = {
     },
     about: {
       title: "О разработчике",
-      description1: "Я — независимый разработчик игр, работающий под именем Benzeji Games. Я создаю игры самостоятельно, сохраняя своё творческое видение без лишних компромиссов.",
+      description1: "Я независимый разработчик игр, работающий под именем Benzeji Games. Я создаю игры самостоятельно, сохраняя своё творческое видение без лишних компромиссов.",
       description2: "Сейчас я сосредоточен на разработке игры в жанре выживания.",
       gameDesigner: "Геймдизайнер",
       joinUs: "Хотите присоединиться?",
@@ -249,7 +250,8 @@ const translations = {
     },
     careers: {
       title: "Стать частью команды",
-      subtitle: "Хотите стать частью Benzeji Games? Работа над проектом ведётся на энтузиазме. Участие добровольное и без оплаты. Отправьте короткое представление и ссылки на ваши работы. Если мы подойдём друг другу, я свяжусь с вами.",
+      subtitle: "Ищу единомышленников, которые хотят помочь с разработкой игры. Участие добровольное и без оплаты.",
+      invitation: "Расскажите немного о себе и пришлите ссылки на свои работы. Если мы подойдём друг другу, я свяжусь с вами.",
       contactForm: "Форма связи",
       whatToInclude: "Что указать",
       role: "Желаемая роль (арт / дизайн / разработка / продюсирование).",
