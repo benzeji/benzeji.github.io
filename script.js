@@ -67,6 +67,13 @@ const translations = {
       copied: "Address copied",
       copyError: "Could not copy the address",
       close: "Close",
+      kicker: "SUPPORT PROJECT ZARYA",
+      fundraiserTitle: "Help Fund Full-Time Development",
+      fundraiserDescription: "Every contribution helps me spend more time developing the game and bringing Project Zarya to life.",
+      raised: "$70 raised",
+      goal: "Goal: $24,000",
+      raisedSource: "≈ ₽6,100 donated",
+      progress: "0.3% funded",
     },
     hero: {
       description: "Open-world survival in post-apocalyptic Russia. Explore, gather resources, build, craft, and fight the infected alone or with friends.",
@@ -179,6 +186,13 @@ const translations = {
       copied: "Адрес скопирован",
       copyError: "Не удалось скопировать адрес",
       close: "Закрыть",
+      kicker: "ПОДДЕРЖАТЬ PROJECT ZARYA",
+      fundraiserTitle: "Сбор на фулл-тайм разработку игры",
+      fundraiserDescription: "Каждый вклад помогает мне уделять больше времени разработке и воплощать Project Zarya в жизнь.",
+      raised: "Собрано 6 100 ₽",
+      goal: "Цель: 2 078 057 ₽",
+      raisedSource: "",
+      progress: "Собрано 0,3%",
     },
     hero: {
       description: "Выживание в открытом мире постапокалиптической России. Исследуйте, собирайте ресурсы, стройте, создавайте снаряжение и сражайтесь с заражёнными в одиночку или с друзьями.",
@@ -426,6 +440,7 @@ function initLocale() {
   langUrl.searchParams.set("lang", targetLocale);
   setAttr(".lang-switch", "href", langUrl.pathname + langUrl.search + langUrl.hash);
   setAttr(".lang-switch", "title", targetLocale === "ru" ? "Русская версия" : "English version");
+  setAttr("[data-fundraiser-progress]", "aria-label", t.donate.progress);
 
   document.querySelectorAll("[data-local-link]").forEach((el) => {
     const localPath = el.getAttribute("data-local-link");
@@ -468,116 +483,59 @@ function initMenu() {
   });
 }
 
-class DonateDialog {
-  constructor(dialog, openButtons, closeButton, copyButton, copyStatus, address) {
-    this.dialog = dialog;
-    this.openButtons = openButtons;
-    this.closeButton = closeButton;
-    this.copyButton = copyButton;
-    this.copyStatus = copyStatus;
+class DonationAddressCopier {
+  constructor(root, address) {
+    this.root = root;
     this.address = address;
-    this.lastFocusedElement = null;
   }
 
   initialize() {
-    if (!this.dialog || !this.closeButton || !this.copyButton || !this.copyStatus) {
-      console.error("DonateDialog: required elements are not assigned.");
+    if (!this.root || !this.address) {
+      console.error("DonationAddressCopier: required dependencies are not assigned.");
       return;
     }
 
-    this.openButtons.forEach((button) => button.addEventListener("click", () => this.open()));
-    this.closeButton.addEventListener("click", () => this.close());
-    this.copyButton.addEventListener("click", () => this.copyAddress());
-    this.dialog.addEventListener("click", (event) => {
-      if (event.target === this.dialog) this.close();
-    });
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && this.dialog.classList.contains("visible")) this.close();
+    this.root.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-copy-address]");
+      if (!button) return;
+      this.copyAddress(button);
     });
   }
 
-  open() {
-    this.lastFocusedElement = document.activeElement;
-    this.dialog.classList.add("visible");
-    this.dialog.setAttribute("aria-hidden", "false");
-    document.body.classList.add("dialog-open");
-    this.closeButton.focus();
-  }
-
-  close() {
-    this.dialog.classList.remove("visible");
-    this.dialog.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("dialog-open");
-    this.copyStatus.textContent = "";
-    if (this.lastFocusedElement instanceof HTMLElement) this.lastFocusedElement.focus();
-  }
-
-  async copyAddress() {
+  async copyAddress(button) {
     const locale = getLocale();
+    const option = button.closest(".crypto-option, .post-crypto-option");
+    const copyStatus = option?.querySelector("[data-copy-status]");
+    if (!copyStatus) {
+      console.error("DonationAddressCopier: copy status element is not assigned.");
+      return;
+    }
     try {
       await navigator.clipboard.writeText(this.address);
-      this.copyStatus.textContent = translations[locale].donate.copied;
+      copyStatus.textContent = translations[locale].donate.copied;
     } catch (error) {
-      console.error("DonateDialog: could not copy the cryptocurrency address.", error);
-      this.copyStatus.textContent = translations[locale].donate.copyError;
+      console.error("DonationAddressCopier: could not copy the cryptocurrency address.", error);
+      copyStatus.textContent = translations[locale].donate.copyError;
     }
   }
 }
 
-function ensureDonateDialog() {
+function ensureDonateLinks() {
   document.querySelectorAll(".nav-actions").forEach((navActions) => {
-    if (navActions.querySelector("[data-donate-open]")) return;
+    if (navActions.querySelector(".donate-trigger")) return;
     const languageSwitch = navActions.querySelector(".lang-switch");
     if (!languageSwitch) {
-      console.error("DonateDialog: language switch anchor is not assigned.");
+      console.error("Donate navigation: language switch anchor is not assigned.");
       return;
     }
-    languageSwitch.insertAdjacentHTML("beforebegin", '<button class="donate-trigger" type="button" data-donate-open data-i18n="donate.button">Donate</button>');
+    languageSwitch.insertAdjacentHTML("beforebegin", `<a class="donate-trigger" href="${withLang("/#donate")}" data-i18n="donate.button">Donate</a>`);
   });
-
-  if (document.querySelector(".donate-modal")) return;
-  document.body.insertAdjacentHTML("beforeend", `
-    <section class="modal donate-modal" role="dialog" aria-modal="true" aria-labelledby="donate-title" aria-hidden="true">
-      <div class="donate-card">
-        <button class="donate-close" type="button" data-donate-close aria-label="Close">×</button>
-        <h2 id="donate-title" data-i18n="donate.title">Donate</h2>
-        <p class="donate-description" data-i18n="donate.description">Choose a convenient way to support Benzeji Games.</p>
-        <div class="donate-options">
-          <a class="donate-option cloudtips-option" href="https://pay.cloudtips.ru/p/be187661" target="_blank" rel="noopener noreferrer">
-            <span class="donate-option-label">CloudTips</span>
-            <span data-i18n="donate.cloudtips">Donate with a bank card</span>
-            <span class="donate-option-arrow" aria-hidden="true">↗</span>
-          </a>
-          <a class="donate-option boosty-option" href="https://boosty.to/benzejigames/donate" target="_blank" rel="noopener noreferrer">
-            <span class="donate-option-label">Boosty</span>
-            <span data-i18n="donate.boosty">Donate with Visa, Mastercard or MIR</span>
-            <span class="donate-option-arrow" aria-hidden="true">↗</span>
-          </a>
-          <div class="donate-option crypto-option">
-            <span class="donate-option-label">USDT</span>
-            <span data-i18n="donate.crypto">Cryptocurrency transfer</span>
-            <span class="crypto-network"><span data-i18n="donate.network">Network</span><strong>ERC20</strong></span>
-            <div class="crypto-address-row">
-              <code>0xd34bB384031993916893C4463402AAB5E770d160</code>
-              <button class="copy-address" type="button" data-copy-address data-i18n="donate.copy">Copy</button>
-            </div>
-            <span class="copy-status" data-copy-status aria-live="polite"></span>
-          </div>
-        </div>
-      </div>
-    </section>`);
 }
 
-function initDonateDialog() {
-  const dialog = document.querySelector(".donate-modal");
-  const openButtons = document.querySelectorAll("[data-donate-open]");
-  const closeButton = document.querySelector("[data-donate-close]");
-  const copyButton = document.querySelector("[data-copy-address]");
-  const copyStatus = document.querySelector("[data-copy-status]");
+function initDonationAddressCopier() {
   const address = "0xd34bB384031993916893C4463402AAB5E770d160";
-  const donateDialog = new DonateDialog(dialog, openButtons, closeButton, copyButton, copyStatus, address);
-  donateDialog.initialize();
-  setAttr("[data-donate-close]", "aria-label", translations[getLocale()].donate.close);
+  const donationAddressCopier = new DonationAddressCopier(document, address);
+  donationAddressCopier.initialize();
 }
 
 function initCookies() {
@@ -788,7 +746,14 @@ function blockToHtml(block) {
         <div class="post-donation-grid">
           <a href="https://pay.cloudtips.ru/p/be187661" target="_blank" rel="noopener noreferrer"><strong>CloudTips</strong><span>${escapeHtml(options.cloudtips)}</span><b aria-hidden="true">↗</b></a>
           <a href="https://boosty.to/benzejigames/donate" target="_blank" rel="noopener noreferrer"><strong>Boosty</strong><span>${escapeHtml(options.boosty)}</span><b aria-hidden="true">↗</b></a>
-          <div class="post-crypto-option"><strong>${escapeHtml(options.crypto)}</strong><span>0xd34bB384031993916893C4463402AAB5E770d160</span></div>
+          <div class="post-crypto-option">
+            <strong>USDT <em>${escapeHtml(options.crypto.replace(/^USDT\s*·\s*/, ""))}</em></strong>
+            <div class="crypto-address-row">
+              <code>0xd34bB384031993916893C4463402AAB5E770d160</code>
+              <button class="copy-address" type="button" data-copy-address>${escapeHtml(translations[getLocale()].donate.copy)}</button>
+            </div>
+            <span class="copy-status" data-copy-status aria-live="polite"></span>
+          </div>
         </div>
       </section>`;
   }
@@ -882,11 +847,11 @@ function escapeHtml(value) {
 
 document.addEventListener("DOMContentLoaded", () => {
   new BrandingManager("Benzeji Games", "/assets/benzeji-mark.svg").apply();
-  ensureDonateDialog();
+  ensureDonateLinks();
   initLocale();
   initSocialIcons();
   initMenu();
-  initDonateDialog();
+  initDonationAddressCopier();
   initCookies();
   initContactForm();
   renderNewsList(document.body.dataset.newsLimit ? Number(document.body.dataset.newsLimit) : undefined);

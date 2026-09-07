@@ -21,7 +21,7 @@
             <li><a href="/#news" data-local-link="/#news" data-i18n="nav.news">News</a></li>
             <li><a href="/#about" data-local-link="/#about" data-i18n="nav.about">About</a></li>
           </ul>
-          <button class="donate-trigger" type="button" data-donate-open data-i18n="donate.button">Donate</button>
+          <a class="donate-trigger" href="#donate" data-i18n="donate.button">Donate</a>
           <a class="lang-switch" href="?lang=ru"><img src="/flags/ru.svg" alt=""><span>ru</span></a>
           <button class="menu-toggle" type="button" aria-label="Menu" aria-expanded="false">☰</button>
         </div>
@@ -79,6 +79,50 @@
         </div>
       </section>
 
+      <section id="donate" class="donate-section section">
+        <div class="container donate-section-inner">
+          <div class="donate-section-copy">
+            <p class="donate-section-kicker" data-i18n="donate.kicker">SUPPORT PROJECT ZARYA</p>
+            <h2 class="section-title" data-i18n="donate.fundraiserTitle">Help Fund Full-Time Development</h2>
+            <p data-i18n="donate.fundraiserDescription">Every contribution helps me spend more time developing the game and bringing Project Zarya to life.</p>
+          </div>
+          <section class="fundraiser-progress" data-fundraiser-progress aria-label="0.3% funded">
+            <div class="fundraiser-progress-heading">
+              <strong data-i18n="donate.raised">$70 raised</strong>
+              <span data-i18n="donate.goal">Goal: $24,000</span>
+            </div>
+            <div class="fundraiser-progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0.29">
+              <span class="fundraiser-progress-fill" style="width: 0.2935%"></span>
+            </div>
+            <div class="fundraiser-progress-meta">
+              <span data-i18n="donate.raisedSource">≈ ₽6,100 donated</span>
+              <strong data-i18n="donate.progress">0.3% funded</strong>
+            </div>
+          </section>
+          <div class="donate-options donate-section-options">
+            <a class="donate-option cloudtips-option" href="https://pay.cloudtips.ru/p/be187661" target="_blank" rel="noopener noreferrer">
+              <span class="donate-option-label">CloudTips</span>
+              <span data-i18n="donate.cloudtips">Donate with a bank card</span>
+              <span class="donate-option-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="donate-option boosty-option" href="https://boosty.to/benzejigames/donate" target="_blank" rel="noopener noreferrer">
+              <span class="donate-option-label">Boosty</span>
+              <span data-i18n="donate.boosty">Donate with Visa, Mastercard or MIR</span>
+              <span class="donate-option-arrow" aria-hidden="true">↗</span>
+            </a>
+            <div class="donate-option crypto-option">
+              <span class="donate-option-label">USDT</span>
+              <span class="crypto-network"><span data-i18n="donate.network">Network</span><strong>ERC20</strong></span>
+              <div class="crypto-address-row">
+                <code>0xd34bB384031993916893C4463402AAB5E770d160</code>
+                <button class="copy-address" type="button" data-copy-address data-i18n="donate.copy">Copy</button>
+              </div>
+              <span class="copy-status" data-copy-status aria-live="polite"></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="about" class="about-section">
         <div class="container">
           <div class="about-copy">
@@ -125,36 +169,6 @@
         <div class="footer-bottom"><span data-year-copy>© Benzeji Games 2026 all rights reserved</span></div>
       </div>
     </footer>
-
-    <section class="modal donate-modal" role="dialog" aria-modal="true" aria-labelledby="donate-title" aria-hidden="true">
-      <div class="donate-card">
-        <button class="donate-close" type="button" data-donate-close aria-label="Close">×</button>
-        <h2 id="donate-title" data-i18n="donate.title">Donate</h2>
-        <p class="donate-description" data-i18n="donate.description">Choose a convenient way to support Benzeji Games.</p>
-        <div class="donate-options">
-          <a class="donate-option cloudtips-option" href="https://pay.cloudtips.ru/p/be187661" target="_blank" rel="noopener noreferrer">
-            <span class="donate-option-label">CloudTips</span>
-            <span data-i18n="donate.cloudtips">Donate with a bank card</span>
-            <span class="donate-option-arrow" aria-hidden="true">↗</span>
-          </a>
-          <a class="donate-option boosty-option" href="https://boosty.to/benzejigames/donate" target="_blank" rel="noopener noreferrer">
-            <span class="donate-option-label">Boosty</span>
-            <span data-i18n="donate.boosty">Donate with Visa, Mastercard or MIR</span>
-            <span class="donate-option-arrow" aria-hidden="true">↗</span>
-          </a>
-          <div class="donate-option crypto-option">
-            <span class="donate-option-label">USDT</span>
-            <span data-i18n="donate.crypto">Cryptocurrency transfer</span>
-            <span class="crypto-network"><span data-i18n="donate.network">Network</span><strong>ERC20</strong></span>
-            <div class="crypto-address-row">
-              <code>0xd34bB384031993916893C4463402AAB5E770d160</code>
-              <button class="copy-address" type="button" data-copy-address data-i18n="donate.copy">Copy</button>
-            </div>
-            <span class="copy-status" data-copy-status aria-live="polite"></span>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <section class="cookie-banner" aria-label="Cookie notice">
       <div class="cookie-inner">

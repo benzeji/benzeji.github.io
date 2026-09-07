@@ -1,45 +1,6 @@
 window.YAKUTSK_NEWS = {
   en: [
     {
-      id: 1,
-      pinned: true,
-      displayOrder: 1,
-      title: "Help Fund Full-Time Development",
-      slug: "full-time-development-fundraiser",
-      category: "announcement",
-      description:
-        "The fundraiser for full-time development of Project Zarya is now open — everyone can help bring the game to life.",
-      publishedAt: "2026-09-07T10:00:00.000Z",
-      cover: {
-        url: "/assets/project-zarya-key-art.png",
-        alternativeText: "Project Zarya key art",
-      },
-      blocks: [
-        {
-          body:
-            "The fundraiser for **full-time development of Project Zarya** is now open. Reaching the goal will let me devote all of my working time to the game, create new systems and content faster, and share development updates more often.\n\nEvery contribution matters. If you would like to help bring Project Zarya to life, choose any convenient option below. Thank you for supporting the game and its development!",
-        },
-        {
-          fundraiser: {
-            raised: 70.45,
-            goal: 24000,
-            raisedLabel: "$70 raised",
-            goalLabel: "Goal: $24,000",
-            sourceLabel: "≈ ₽6,100 donated",
-            progressLabel: "0.3% funded",
-          },
-        },
-        {
-          donationOptions: {
-            title: "Support the development",
-            cloudtips: "Donate by bank card via CloudTips",
-            boosty: "Donate with Visa, Mastercard or MIR via Boosty",
-            crypto: "USDT · ERC20",
-          },
-        },
-      ],
-    },
-    {
       id: 2,
       displayOrder: 3,
       title: "Inventory System 0.0.38",
@@ -99,45 +60,6 @@ window.YAKUTSK_NEWS = {
     },
   ],
   ru: [
-    {
-      id: 1,
-      pinned: true,
-      displayOrder: 1,
-      title: "Сбор на фулл-тайм разработку игры",
-      slug: "full-time-development-fundraiser",
-      category: "announcement",
-      description:
-        "Открылся сбор на фулл-тайм разработку Project Zarya — помочь созданию игры может каждый.",
-      publishedAt: "2026-09-07T10:00:00.000Z",
-      cover: {
-        url: "/assets/project-zarya-key-art.png",
-        alternativeText: "Ключевой арт Project Zarya",
-      },
-      blocks: [
-        {
-          body:
-            "Открылся сбор на **фулл-тайм разработку Project Zarya**. Достижение цели позволит мне посвящать игре всё рабочее время, быстрее создавать новые системы и контент и чаще делиться новостями о разработке.\n\nВажен каждый вклад. Если вы хотите помочь воплотить Project Zarya в жизнь, выберите любой удобный способ ниже. Спасибо за поддержку игры и её разработки!",
-        },
-        {
-          fundraiser: {
-            raised: 6100,
-            goal: 2078057,
-            raisedLabel: "Собрано 6 100 ₽",
-            goalLabel: "Цель: 2 078 057 ₽",
-            sourceLabel: "Эквивалент цели — $24,000",
-            progressLabel: "Собрано 0,3%",
-          },
-        },
-        {
-          donationOptions: {
-            title: "Поддержать разработку",
-            cloudtips: "Поддержать банковской картой через CloudTips",
-            boosty: "Поддержать через Boosty картой Visa, Mastercard или МИР",
-            crypto: "USDT · сеть ERC20",
-          },
-        },
-      ],
-    },
     {
       id: 2,
       displayOrder: 3,

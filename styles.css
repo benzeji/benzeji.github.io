@@ -2122,6 +2122,75 @@ body .news-card.support-news-card .button {
   font-size: 13px;
 }
 
+.post-crypto-option {
+  grid-template-columns: 1fr;
+}
+
+.post-crypto-option strong em {
+  display: inline-block;
+  margin-left: 8px;
+  border: 1px solid rgba(191, 67, 66, 0.58);
+  border-radius: 999px;
+  background: rgba(191, 67, 66, 0.14);
+  padding: 4px 9px;
+  color: #f08a89;
+  font-size: 12px;
+  font-style: normal;
+  letter-spacing: 0.04em;
+}
+
+.post-crypto-option .crypto-address-row {
+  margin-top: 0;
+}
+
+.fundraiser-progress-meta span:empty {
+  display: none;
+}
+
+.donate-section {
+  scroll-margin-top: 82px;
+  border-block: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    linear-gradient(90deg, rgba(8, 10, 14, 0.97), rgba(8, 10, 14, 0.78)),
+    url("/assets/fundraiser-background.png") center / cover no-repeat;
+}
+
+.donate-section-inner {
+  max-width: 980px;
+}
+
+.donate-section-copy {
+  max-width: 760px;
+}
+
+.donate-section-copy > p:last-child {
+  margin-top: 16px;
+  color: #c8ced8;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.donate-section-kicker {
+  margin-bottom: 10px;
+  color: #e16a69;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.donate-section .fundraiser-progress {
+  margin-block: 30px;
+  backdrop-filter: blur(10px);
+}
+
+.donate-section-options {
+  margin-top: 0;
+}
+
+.donate-section-options .crypto-option {
+  border-color: rgba(191, 67, 66, 0.36);
+}
+
 @media (max-width: 600px) {
   .fundraiser-progress-heading,
   .fundraiser-progress-meta {
@@ -2137,6 +2206,10 @@ body .news-card.support-news-card .button {
   .post-donation-grid span {
     grid-column: 1 / -1;
     grid-row: 2;
+  }
+
+  .post-crypto-option .crypto-address-row {
+    grid-column: 1 / -1;
   }
 }
 
