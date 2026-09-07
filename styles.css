@@ -319,17 +319,25 @@ body[data-locale="ru"] .nav-links a {
 }
 
 .donate-trigger {
-  min-height: 38px;
+  display: inline-flex;
+  flex: 0 0 auto;
+  width: auto;
+  height: 38px;
+  align-items: center;
+  justify-content: center;
   border: 1px solid var(--brand-bear);
   border-radius: 999px;
   background: var(--brand-bear);
-  padding-inline: 18px;
+  padding: 0 18px;
   color: #ffffff;
   font: inherit;
   font-size: 12px;
   font-weight: 800;
+  line-height: 1;
   letter-spacing: 0.1em;
+  text-decoration: none;
   text-transform: uppercase;
+  white-space: nowrap;
   cursor: pointer;
   transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease;
 }
@@ -2160,7 +2168,14 @@ body .news-card.support-news-card .button {
 }
 
 .donate-section-copy {
-  max-width: 760px;
+  max-width: 980px;
+}
+
+.donate-section-copy .section-title {
+  max-width: 980px;
+  font-size: clamp(44px, 5.3vw, 76px);
+  line-height: 1.12;
+  text-wrap: wrap;
 }
 
 .donate-section-copy > p:last-child {

@@ -68,11 +68,10 @@ const translations = {
       copyError: "Could not copy the address",
       close: "Close",
       kicker: "SUPPORT PROJECT ZARYA",
-      fundraiserTitle: "Help Fund Full-Time Development",
+      fundraiserTitle: "Help Fund Full‑Time Development",
       fundraiserDescription: "Every contribution helps me spend more time developing the game and bringing Project Zarya to life.",
       raised: "$70 raised",
       goal: "Goal: $24,000",
-      raisedSource: "≈ ₽6,100 donated",
       progress: "0.3% funded",
     },
     hero: {
@@ -191,7 +190,6 @@ const translations = {
       fundraiserDescription: "Каждый вклад помогает мне уделять больше времени разработке и воплощать Project Zarya в жизнь.",
       raised: "Собрано 6 100 ₽",
       goal: "Цель: 2 078 057 ₽",
-      raisedSource: "",
       progress: "Собрано 0,3%",
     },
     hero: {
