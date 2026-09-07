@@ -92,7 +92,6 @@ const translations = {
     about: {
       title: "About the Developer",
       description1: "I'm a solo indie game developer working under the name Benzeji Games. I develop my games independently, preserving my creative vision without unnecessary compromises.",
-      description2: "I'm currently focused on developing a survival game.",
       gameDesigner: "Game Designer",
       joinUs: "Want to join me?",
       joinUsDescription: "Want to help develop the project? I'd be glad to collaborate. Participation is voluntary and unpaid.",
@@ -193,7 +192,7 @@ const translations = {
     },
     news: {
       title: "ПОСЛЕДНИЕ НОВОСТИ",
-      subtitle: "Все последние новости напрямую от источника... от нас!",
+      subtitle: "Все последние новости напрямую от источника...",
       indexTitle: "Новости",
       indexSubtitle: "Обновления, анонсы и заметки о разработке.",
       viewAll: "Все посты",
@@ -205,7 +204,6 @@ const translations = {
     about: {
       title: "О разработчике",
       description1: "Я независимый разработчик игр, работающий под именем Benzeji Games. Я создаю игры самостоятельно, сохраняя своё творческое видение без лишних компромиссов.",
-      description2: "Сейчас я сосредоточен на разработке игры в жанре выживания.",
       gameDesigner: "Геймдизайнер",
       joinUs: "Хотите присоединиться?",
       joinUsDescription: "Хотите помочь с развитием проекта? Буду рад сотрудничеству. Участие — на энтузиазме, добровольное и без оплаты.",
