@@ -4,20 +4,38 @@ window.YAKUTSK_NEWS = {
       id: 1,
       pinned: true,
       displayOrder: 1,
-      title: "I now have a Boosty page",
-      slug: "we-now-have-a-boosty-page",
+      title: "Help Fund Full-Time Development",
+      slug: "full-time-development-fundraiser",
       category: "announcement",
       description:
-        "I now have a page on Boosty, where you can support the development of my games directly.",
-      publishedAt: "2026-06-20T10:00:00.000Z",
+        "The fundraiser for full-time development of Project Zarya is now open — everyone can help bring the game to life.",
+      publishedAt: "2026-09-07T10:00:00.000Z",
       cover: {
-        url: "/assets/boosty-preview.png",
-        alternativeText: "Boosty logo preview",
+        url: "/assets/project-zarya-key-art.png",
+        alternativeText: "Project Zarya key art",
       },
       blocks: [
         {
           body:
-            "Friends, I now have a page on Boosty.\n\nYou can now support the development of my games directly. Any support helps me spend more time on my projects, develop new ideas, improve the quality of the game, and share more updates about the development process.\n\nOn Boosty, I plan to publish additional materials: development notes, early screenshots, behind-the-scenes details, update plans, and other content for those who want to be closer to the creation of my games.\n\nYou can support me here: [https://boosty.to/benzejigames](https://boosty.to/benzejigames)\n\nThank you to everyone who follows my projects, shares my news, and helps me move forward.",
+            "The fundraiser for **full-time development of Project Zarya** is now open. Reaching the goal will let me devote all of my working time to the game, create new systems and content faster, and share development updates more often.\n\nEvery contribution matters. If you would like to help bring Project Zarya to life, choose any convenient option below. Thank you for supporting the game and its development!",
+        },
+        {
+          fundraiser: {
+            raised: 70.45,
+            goal: 24000,
+            raisedLabel: "$70 raised",
+            goalLabel: "Goal: $24,000",
+            sourceLabel: "≈ ₽6,100 donated",
+            progressLabel: "0.3% funded",
+          },
+        },
+        {
+          donationOptions: {
+            title: "Support the development",
+            cloudtips: "Donate by bank card via CloudTips",
+            boosty: "Donate with Visa, Mastercard or MIR via Boosty",
+            crypto: "USDT · ERC20",
+          },
         },
       ],
     },
@@ -85,20 +103,38 @@ window.YAKUTSK_NEWS = {
       id: 1,
       pinned: true,
       displayOrder: 1,
-      title: "У меня появилась страница на Boosty",
-      slug: "we-now-have-a-boosty-page",
+      title: "Сбор на фулл-тайм разработку игры",
+      slug: "full-time-development-fundraiser",
       category: "announcement",
       description:
-        "У меня появилась страница на Boosty, где вы можете напрямую поддержать разработку моих игр.",
-      publishedAt: "2026-06-20T10:00:00.000Z",
+        "Открылся сбор на фулл-тайм разработку Project Zarya — помочь созданию игры может каждый.",
+      publishedAt: "2026-09-07T10:00:00.000Z",
       cover: {
-        url: "/assets/boosty-preview.png",
-        alternativeText: "Превью с логотипом Boosty",
+        url: "/assets/project-zarya-key-art.png",
+        alternativeText: "Ключевой арт Project Zarya",
       },
       blocks: [
         {
           body:
-            "Друзья, у меня появилась страница на Boosty.\n\nТеперь вы можете поддержать разработку моих игр напрямую. Любая поддержка помогает мне уделять больше времени проектам, развивать идеи, улучшать качество игры и делиться с вами новостями о процессе разработки.\n\nНа Boosty я планирую публиковать дополнительные материалы: заметки о разработке, ранние скриншоты, закулисные подробности, планы обновлений и другой контент для тех, кто хочет быть ближе к созданию моих игр.\n\nПоддержать меня можно здесь: [https://boosty.to/benzejigames](https://boosty.to/benzejigames)\n\nСпасибо всем, кто следит за моими проектами, делится новостями и помогает мне двигаться дальше.",
+            "Открылся сбор на **фулл-тайм разработку Project Zarya**. Достижение цели позволит мне посвящать игре всё рабочее время, быстрее создавать новые системы и контент и чаще делиться новостями о разработке.\n\nВажен каждый вклад. Если вы хотите помочь воплотить Project Zarya в жизнь, выберите любой удобный способ ниже. Спасибо за поддержку игры и её разработки!",
+        },
+        {
+          fundraiser: {
+            raised: 6100,
+            goal: 2078057,
+            raisedLabel: "Собрано 6 100 ₽",
+            goalLabel: "Цель: 2 078 057 ₽",
+            sourceLabel: "Эквивалент цели — $24,000",
+            progressLabel: "Собрано 0,3%",
+          },
+        },
+        {
+          donationOptions: {
+            title: "Поддержать разработку",
+            cloudtips: "Поддержать банковской картой через CloudTips",
+            boosty: "Поддержать через Boosty картой Visa, Mastercard или МИР",
+            crypto: "USDT · сеть ERC20",
+          },
         },
       ],
     },

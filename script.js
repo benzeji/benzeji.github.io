@@ -761,6 +761,37 @@ async function renderNewsList(limit) {
 }
 
 function blockToHtml(block) {
+  if (block.fundraiser) {
+    const fundraiser = block.fundraiser;
+    const rawProgress = fundraiser.goal > 0 ? (fundraiser.raised / fundraiser.goal) * 100 : 0;
+    const progress = Math.min(100, Math.max(0, rawProgress));
+    return `
+      <section class="fundraiser-progress" aria-label="${escapeHtml(fundraiser.progressLabel)}">
+        <div class="fundraiser-progress-heading">
+          <strong>${escapeHtml(fundraiser.raisedLabel)}</strong>
+          <span>${escapeHtml(fundraiser.goalLabel)}</span>
+        </div>
+        <div class="fundraiser-progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${progress.toFixed(2)}">
+          <span class="fundraiser-progress-fill" style="width: ${progress.toFixed(4)}%"></span>
+        </div>
+        <div class="fundraiser-progress-meta">
+          <span>${escapeHtml(fundraiser.sourceLabel)}</span>
+          <strong>${escapeHtml(fundraiser.progressLabel)}</strong>
+        </div>
+      </section>`;
+  }
+  if (block.donationOptions) {
+    const options = block.donationOptions;
+    return `
+      <section class="post-donation-options">
+        <h2>${escapeHtml(options.title)}</h2>
+        <div class="post-donation-grid">
+          <a href="https://pay.cloudtips.ru/p/be187661" target="_blank" rel="noopener noreferrer"><strong>CloudTips</strong><span>${escapeHtml(options.cloudtips)}</span><b aria-hidden="true">↗</b></a>
+          <a href="https://boosty.to/benzejigames/donate" target="_blank" rel="noopener noreferrer"><strong>Boosty</strong><span>${escapeHtml(options.boosty)}</span><b aria-hidden="true">↗</b></a>
+          <div class="post-crypto-option"><strong>${escapeHtml(options.crypto)}</strong><span>0xd34bB384031993916893C4463402AAB5E770d160</span></div>
+        </div>
+      </section>`;
+  }
   if (Array.isArray(block.items) && block.items.length) {
     const listTitle = block.title ? `<h2>${escapeHtml(block.title)}</h2>` : "";
     const items = block.items
