@@ -91,8 +91,8 @@ const translations = {
     },
     about: {
       title: "About the Developer",
-      description1: "I'm a solo indie game developer working under the name Benzeji Games. I develop my games thoughtfully, preserving my creative vision without unnecessary compromises.",
-      description2: "I aim to create engaging, high-quality games with a distinctive atmosphere and memorable gameplay. My goal is to grow as a developer and create projects I truly believe in.",
+      description1: "I'm a solo indie game developer working under the name Benzeji Games. I develop my games independently, preserving my creative vision without unnecessary compromises.",
+      description2: "I'm currently focused on developing a survival game.",
       gameDesigner: "Game Designer",
       joinUs: "Want to join me?",
       joinUsDescription: "Want to help develop the project? I'd be glad to collaborate. Participation is voluntary and unpaid.",
@@ -203,8 +203,8 @@ const translations = {
     },
     about: {
       title: "О разработчике",
-      description1: "Я — независимый разработчик игр, работающий под именем Benzeji Games. Я создаю игры самостоятельно и вдумчиво, сохраняя своё творческое видение без лишних компромиссов.",
-      description2: "Я стремлюсь создавать увлекательные, качественные игры с особенной атмосферой и запоминающимся игровым опытом. Моя цель — расти как разработчик и создавать проекты, в которые я действительно верю.",
+      description1: "Я — независимый разработчик игр, работающий под именем Benzeji Games. Я создаю игры самостоятельно, сохраняя своё творческое видение без лишних компромиссов.",
+      description2: "Сейчас я сосредоточен на разработке игры в жанре выживания.",
       gameDesigner: "Геймдизайнер",
       joinUs: "Хотите присоединиться?",
       joinUsDescription: "Хотите помочь с развитием проекта? Буду рад сотрудничеству. Участие — на энтузиазме, добровольное и без оплаты.",
@@ -249,7 +249,7 @@ const translations = {
     },
     careers: {
       title: "Стать частью команды",
-      subtitle: "Хотите стать частью Benzeji Games? Работа над проектом ведётся на энтузиазме — участие добровольное и без оплаты. Отправьте короткое представление и ссылки на ваши работы. Если мы подойдём друг другу, я свяжусь с вами.",
+      subtitle: "Хотите стать частью Benzeji Games? Работа над проектом ведётся на энтузиазме. Участие добровольное и без оплаты. Отправьте короткое представление и ссылки на ваши работы. Если мы подойдём друг другу, я свяжусь с вами.",
       contactForm: "Форма связи",
       whatToInclude: "Что указать",
       role: "Желаемая роль (арт / дизайн / разработка / продюсирование).",
