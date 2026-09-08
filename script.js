@@ -743,7 +743,7 @@ function blockToHtml(block) {
         <h2>${escapeHtml(options.title)}</h2>
         <div class="post-donation-grid">
           <a href="https://pay.cloudtips.ru/p/be187661" target="_blank" rel="noopener noreferrer"><strong>CloudTips</strong><span>${escapeHtml(options.cloudtips)}</span><b aria-hidden="true">↗</b></a>
-          <a href="https://boosty.to/benzejigames/donate" target="_blank" rel="noopener noreferrer"><strong>Boosty</strong><span>${escapeHtml(options.boosty)}</span><b aria-hidden="true">↗</b></a>
+          <a href="https://www.donationalerts.com/r/benzejigames" target="_blank" rel="noopener noreferrer"><strong>DonationAlerts</strong><span>${escapeHtml(options.boosty)}</span><b aria-hidden="true">↗</b></a>
           <div class="post-crypto-option">
             <strong>USDT <em>${escapeHtml(options.crypto.replace(/^USDT\s*·\s*/, ""))}</em></strong>
             <div class="crypto-address-row">
