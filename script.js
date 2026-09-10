@@ -29,15 +29,13 @@ class BrandingManager {
     const socialLinks = {
       youtube: "https://www.youtube.com/@BenzejiGames",
       twitter: "https://x.com/benzejiGames",
+      vk: "https://vk.ru/projectzarya_game",
       discord: "https://discord.gg/ThkzJvhSUg",
       steam: STEAM_DEVELOPER_URL,
       fandom: "https://project-zarya.fandom.com/wiki/Project_Zarya_Wiki",
     };
     document.querySelectorAll(".social.email").forEach((link) => {
       link.classList.replace("email", "fandom");
-    });
-    document.querySelectorAll(".social.vk").forEach((link) => {
-      link.classList.replace("vk", "fandom");
     });
     document.querySelectorAll(".social.boosty").forEach((link) => {
       link.classList.replace("boosty", "fandom");
@@ -107,7 +105,7 @@ const translations = {
       copyright: "© Benzeji Games {year} all rights reserved",
       youtube: "YouTube",
       twitter: "X",
-      bluesky: "Bluesky",
+      vk: "VK",
       tiktok: "TikTok",
       discord: "Discord",
       steam: "Steam",
@@ -225,7 +223,7 @@ const translations = {
       copyright: "© Benzeji Games {year} все права защищены",
       youtube: "YouTube",
       twitter: "X",
-      bluesky: "Bluesky",
+      vk: "VK",
       tiktok: "TikTok",
       discord: "Discord",
       steam: "Steam",
@@ -553,18 +551,18 @@ function initSocialIcons() {
   const locale = getLocale();
   const footer = translations[locale].footer;
   document.querySelectorAll(".socials").forEach((socials) => {
-    if (socials.querySelector(".social.bluesky")) return;
+    if (socials.querySelector(".social.vk")) return;
     const twitterLink = socials.querySelector(".social.twitter");
     if (!twitterLink) {
       console.error("Social links: X link is not assigned.");
       return;
     }
-    twitterLink.insertAdjacentHTML("afterend", '<a class="social bluesky" href="https://bsky.app/profile/benzejigames.bsky.social" target="_blank" rel="noopener noreferrer" aria-label="Bluesky"><img src="/assets/social/bluesky.svg" alt=""><span class="tooltip">Bluesky</span></a>');
+    twitterLink.insertAdjacentHTML("afterend", '<a class="social vk" href="https://vk.ru/projectzarya_game" target="_blank" rel="noopener noreferrer" aria-label="VK"><img src="/assets/social/vk.svg" alt=""><span class="tooltip">VK</span></a>');
   });
   const icons = {
     youtube: { src: "/assets/social/youtube.svg", label: footer.youtube },
     twitter: { src: "/assets/social/x.svg", label: footer.twitter },
-    bluesky: { src: "/assets/social/bluesky.svg", label: footer.bluesky },
+    vk: { src: "/assets/social/vk.svg", label: footer.vk },
     tiktok: { src: "/assets/social/tiktok.svg", label: footer.tiktok },
     discord: { src: "/assets/social/discord.svg", label: footer.discord },
     steam: { src: "/assets/social/steam.svg", label: footer.steam },
