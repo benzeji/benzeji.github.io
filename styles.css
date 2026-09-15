@@ -2262,16 +2262,6 @@ body .news-card.support-news-card .button {
   }
 }
 
-@media (max-width: 420px) {
-  .crypto-payment-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .crypto-qr {
-    width: 104px;
-  }
-}
-
 /* Our Games is temporarily hidden across shared navigation on inner pages. */
 .nav-links li:has(> [data-i18n="nav.games"]) {
   display: none;
