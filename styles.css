@@ -1272,7 +1272,7 @@ body.dialog-open {
   display: grid;
   grid-template-columns: 112px minmax(0, 1fr);
   align-items: center;
-  gap: 16px;
+  gap: 10px;
 }
 
 .crypto-qr {
@@ -1286,15 +1286,17 @@ body.dialog-open {
 }
 
 .crypto-address-details {
+  display: flex;
+  align-self: stretch;
+  flex-direction: column;
+  justify-content: center;
   min-width: 0;
 }
 
 .crypto-address-heading {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
-  gap: 8px 12px;
+  gap: 8px;
   margin-bottom: 9px;
 }
 
@@ -2250,7 +2252,7 @@ body .news-card.support-news-card .button {
 
   .crypto-payment-layout {
     grid-template-columns: 88px minmax(0, 1fr);
-    gap: 12px;
+    gap: 8px;
   }
 
   .crypto-qr {

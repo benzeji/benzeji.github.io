@@ -180,7 +180,7 @@ const translations = {
       boosty: "Поддержать картой Visa, Mastercard или МИР",
       crypto: "Перевод в криптовалюте",
       network: "Сеть",
-      addressLabel: "Адрес USDT",
+      addressLabel: "USDT Address",
       copy: "Копировать",
       copied: "Адрес скопирован",
       copyError: "Не удалось скопировать адрес",
@@ -750,7 +750,7 @@ function blockToHtml(block) {
               <div class="crypto-address-details">
                 <div class="crypto-address-heading">
                   <span class="crypto-address-label">${escapeHtml(translations[getLocale()].donate.addressLabel)}</span>
-                  <span class="crypto-network"><span>${escapeHtml(translations[getLocale()].donate.network)}</span><strong>TRC20</strong></span>
+                  <span class="crypto-network"><strong>TRC20</strong></span>
                 </div>
                 <div class="crypto-address-row">
                   <code>TGhRkqdcNzfdBGbTY2pQxmpPiBiisQBVVj</code>
