@@ -110,13 +110,22 @@
               <span class="donate-option-arrow" aria-hidden="true">↗</span>
             </a>
             <div class="donate-option crypto-option">
-              <span class="donate-option-label">USDT</span>
-              <span class="crypto-network"><span data-i18n="donate.network">Network</span><strong>TRC20</strong></span>
-              <div class="crypto-address-row">
-                <code>TGhRkqdcNzfdBGbTY2pQxmpPiBiisQBVVj</code>
-                <button class="copy-address" type="button" data-copy-address data-i18n="donate.copy">Copy</button>
+              <div class="crypto-payment-layout">
+                <img class="crypto-qr" src="/assets/project-zarya-usdt-trc20-qr.png" alt="QR code for the USDT TRC20 address">
+                <div class="crypto-address-details">
+                  <div class="crypto-address-heading">
+                    <span class="crypto-address-label" data-i18n="donate.addressLabel">USDT Address</span>
+                    <span class="crypto-network"><span data-i18n="donate.network">Network</span><strong>TRC20</strong></span>
+                  </div>
+                  <div class="crypto-address-row">
+                    <code>TGhRkqdcNzfdBGbTY2pQxmpPiBiisQBVVj</code>
+                    <button class="copy-address" type="button" data-copy-address>
+                      <span data-i18n="donate.copy">Copy</span>
+                    </button>
+                  </div>
+                  <span class="copy-status" data-copy-status aria-live="polite"></span>
+                </div>
               </div>
-              <span class="copy-status" data-copy-status aria-live="polite"></span>
             </div>
           </div>
         </div>

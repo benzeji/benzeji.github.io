@@ -61,6 +61,7 @@ const translations = {
       boosty: "Donate with Visa, Mastercard or MIR",
       crypto: "Cryptocurrency transfer",
       network: "Network",
+      addressLabel: "USDT Address",
       copy: "Copy",
       copied: "Address copied",
       copyError: "Could not copy the address",
@@ -179,6 +180,7 @@ const translations = {
       boosty: "Поддержать картой Visa, Mastercard или МИР",
       crypto: "Перевод в криптовалюте",
       network: "Сеть",
+      addressLabel: "Адрес USDT",
       copy: "Копировать",
       copied: "Адрес скопирован",
       copyError: "Не удалось скопировать адрес",
@@ -743,12 +745,22 @@ function blockToHtml(block) {
           <a href="https://pay.cloudtips.ru/p/be187661" target="_blank" rel="noopener noreferrer"><strong>CloudTips</strong><span>${escapeHtml(options.cloudtips)}</span><b aria-hidden="true">↗</b></a>
           <a href="https://www.donationalerts.com/r/benzejigames" target="_blank" rel="noopener noreferrer"><strong>DonationAlerts</strong><span>${escapeHtml(options.boosty)}</span><b aria-hidden="true">↗</b></a>
           <div class="post-crypto-option">
-            <strong>USDT <em>TRC20</em></strong>
-            <div class="crypto-address-row">
-              <code>TGhRkqdcNzfdBGbTY2pQxmpPiBiisQBVVj</code>
-              <button class="copy-address" type="button" data-copy-address>${escapeHtml(translations[getLocale()].donate.copy)}</button>
+            <div class="crypto-payment-layout">
+              <img class="crypto-qr" src="/assets/project-zarya-usdt-trc20-qr.png" alt="QR code for the USDT TRC20 address">
+              <div class="crypto-address-details">
+                <div class="crypto-address-heading">
+                  <span class="crypto-address-label">${escapeHtml(translations[getLocale()].donate.addressLabel)}</span>
+                  <span class="crypto-network"><span>${escapeHtml(translations[getLocale()].donate.network)}</span><strong>TRC20</strong></span>
+                </div>
+                <div class="crypto-address-row">
+                  <code>TGhRkqdcNzfdBGbTY2pQxmpPiBiisQBVVj</code>
+                  <button class="copy-address" type="button" data-copy-address>
+                    <span>${escapeHtml(translations[getLocale()].donate.copy)}</span>
+                  </button>
+                </div>
+                <span class="copy-status" data-copy-status aria-live="polite"></span>
+              </div>
             </div>
-            <span class="copy-status" data-copy-status aria-live="polite"></span>
           </div>
         </div>
       </section>`;

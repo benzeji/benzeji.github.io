@@ -1243,7 +1243,6 @@ body.dialog-open {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin-top: 10px;
   color: #aeb4c0;
   font-size: 11px;
   font-weight: 700;
@@ -1269,11 +1268,46 @@ body.dialog-open {
   transform: translateY(-50%);
 }
 
+.crypto-payment-layout {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  align-items: center;
+  gap: 16px;
+}
+
+.crypto-qr {
+  display: block;
+  width: 112px;
+  aspect-ratio: 1;
+  background: transparent;
+  filter: invert(1);
+  mix-blend-mode: screen;
+  object-fit: contain;
+}
+
+.crypto-address-details {
+  min-width: 0;
+}
+
+.crypto-address-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 12px;
+  margin-bottom: 9px;
+}
+
+.crypto-address-label {
+  color: #aeb4c0;
+  font-size: 13px;
+  font-weight: 700;
+}
+
 .crypto-address-row {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-top: 14px;
 }
 
 .crypto-address-row code {
@@ -2124,7 +2158,7 @@ body .news-card.support-news-card .button {
   color: #ffffff;
 }
 
-.post-crypto-option span {
+.post-crypto-option code {
   overflow-wrap: anywhere;
   font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
   font-size: 13px;
@@ -2134,21 +2168,8 @@ body .news-card.support-news-card .button {
   grid-template-columns: 1fr;
 }
 
-.post-crypto-option strong em {
-  display: inline-block;
-  margin-left: 8px;
-  border: 1px solid rgba(191, 67, 66, 0.58);
-  border-radius: 999px;
-  background: rgba(191, 67, 66, 0.14);
-  padding: 4px 9px;
-  color: #f08a89;
-  font-size: 12px;
-  font-style: normal;
-  letter-spacing: 0.04em;
-}
-
-.post-crypto-option .crypto-address-row {
-  margin-top: 0;
+.post-crypto-option .crypto-payment-layout {
+  width: 100%;
 }
 
 .fundraiser-progress-meta span:empty {
@@ -2225,6 +2246,29 @@ body .news-card.support-news-card .button {
 
   .post-crypto-option .crypto-address-row {
     grid-column: 1 / -1;
+  }
+
+  .crypto-payment-layout {
+    grid-template-columns: 88px minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .crypto-qr {
+    width: 88px;
+  }
+
+  .crypto-address-row code {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 420px) {
+  .crypto-payment-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .crypto-qr {
+    width: 104px;
   }
 }
 
