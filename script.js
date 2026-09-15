@@ -529,7 +529,7 @@ function ensureDonateLinks() {
 }
 
 function initDonationAddressCopier() {
-  const address = "0xd34bB384031993916893C4463402AAB5E770d160";
+  const address = "TGhRkqdcNzfdBGbTY2pQxmpPiBiisQBVVj";
   const donationAddressCopier = new DonationAddressCopier(document, address);
   donationAddressCopier.initialize();
 }
@@ -743,9 +743,9 @@ function blockToHtml(block) {
           <a href="https://pay.cloudtips.ru/p/be187661" target="_blank" rel="noopener noreferrer"><strong>CloudTips</strong><span>${escapeHtml(options.cloudtips)}</span><b aria-hidden="true">↗</b></a>
           <a href="https://www.donationalerts.com/r/benzejigames" target="_blank" rel="noopener noreferrer"><strong>DonationAlerts</strong><span>${escapeHtml(options.boosty)}</span><b aria-hidden="true">↗</b></a>
           <div class="post-crypto-option">
-            <strong>USDT <em>${escapeHtml(options.crypto.replace(/^USDT\s*·\s*/, ""))}</em></strong>
+            <strong>USDT <em>TRC20</em></strong>
             <div class="crypto-address-row">
-              <code>0xd34bB384031993916893C4463402AAB5E770d160</code>
+              <code>TGhRkqdcNzfdBGbTY2pQxmpPiBiisQBVVj</code>
               <button class="copy-address" type="button" data-copy-address>${escapeHtml(translations[getLocale()].donate.copy)}</button>
             </div>
             <span class="copy-status" data-copy-status aria-live="polite"></span>
