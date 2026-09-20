@@ -29,16 +29,16 @@ class BrandingManager {
     const socialLinks = {
       youtube: "https://www.youtube.com/@BenzejiGames",
       twitter: "https://x.com/benzejiGames",
+      telegram: "https://t.me/BenzejiGames",
       vk: "https://vk.ru/projectzarya_game",
       discord: "https://discord.gg/ThkzJvhSUg",
       steam: STEAM_DEVELOPER_URL,
-      fandom: "https://project-zarya.fandom.com/wiki/Project_Zarya_Wiki",
     };
     document.querySelectorAll(".social.email").forEach((link) => {
-      link.classList.replace("email", "fandom");
+      link.classList.replace("email", "telegram");
     });
     document.querySelectorAll(".social.boosty").forEach((link) => {
-      link.classList.replace("boosty", "fandom");
+      link.classList.replace("boosty", "telegram");
     });
     Object.entries(socialLinks).forEach(([network, url]) => {
       document.querySelectorAll(`.social.${network}`).forEach((link) => {
@@ -106,6 +106,7 @@ const translations = {
       copyright: "© Benzeji Games {year} all rights reserved",
       youtube: "YouTube",
       twitter: "X",
+      telegram: "Telegram",
       vk: "VK",
       tiktok: "TikTok",
       discord: "Discord",
@@ -225,6 +226,7 @@ const translations = {
       copyright: "© Benzeji Games {year} все права защищены",
       youtube: "YouTube",
       twitter: "X",
+      telegram: "Telegram",
       vk: "VK",
       tiktok: "TikTok",
       discord: "Discord",
@@ -553,22 +555,33 @@ function initSocialIcons() {
   const locale = getLocale();
   const footer = translations[locale].footer;
   document.querySelectorAll(".socials").forEach((socials) => {
-    if (socials.querySelector(".social.vk")) return;
     const twitterLink = socials.querySelector(".social.twitter");
     if (!twitterLink) {
       console.error("Social links: X link is not assigned.");
       return;
     }
-    twitterLink.insertAdjacentHTML("afterend", '<a class="social vk" href="https://vk.ru/projectzarya_game" target="_blank" rel="noopener noreferrer" aria-label="VK"><img src="/assets/social/vk.svg" alt=""><span class="tooltip">VK</span></a>');
+    let telegramLink = socials.querySelector(".social.telegram");
+    if (!telegramLink) {
+      twitterLink.insertAdjacentHTML("afterend", '<a class="social telegram" href="https://t.me/BenzejiGames" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><img src="/assets/social/telegram.svg" alt=""><span class="tooltip">Telegram</span></a>');
+      telegramLink = socials.querySelector(".social.telegram");
+    } else {
+      twitterLink.insertAdjacentElement("afterend", telegramLink);
+    }
+    let vkLink = socials.querySelector(".social.vk");
+    if (!vkLink) {
+      telegramLink.insertAdjacentHTML("afterend", '<a class="social vk" href="https://vk.ru/projectzarya_game" target="_blank" rel="noopener noreferrer" aria-label="VK"><img src="/assets/social/vk.svg" alt=""><span class="tooltip">VK</span></a>');
+    } else {
+      telegramLink.insertAdjacentElement("afterend", vkLink);
+    }
   });
   const icons = {
     youtube: { src: "/assets/social/youtube.svg", label: footer.youtube },
     twitter: { src: "/assets/social/x.svg", label: footer.twitter },
+    telegram: { src: "/assets/social/telegram.svg", label: footer.telegram },
     vk: { src: "/assets/social/vk.svg", label: footer.vk },
     tiktok: { src: "/assets/social/tiktok.svg", label: footer.tiktok },
     discord: { src: "/assets/social/discord.svg", label: footer.discord },
     steam: { src: "/assets/social/steam.svg", label: footer.steam },
-    fandom: { src: "/assets/social/fandom.svg", label: "Fandom" },
   };
 
   Object.entries(icons).forEach(([className, icon]) => {
