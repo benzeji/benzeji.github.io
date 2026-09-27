@@ -410,10 +410,10 @@ function initLocale() {
 
   document.querySelectorAll("[data-about-description1]").forEach((el) => {
     const description = t.about.description1;
-    const brand = "Benzeji Games";
-    const index = description.indexOf(brand);
+    const gameTitle = "Project Zarya";
+    const index = description.indexOf(gameTitle);
     el.innerHTML = index >= 0
-      ? `${escapeHtml(description.slice(0, index))}<strong>${brand}</strong>${escapeHtml(description.slice(index + brand.length))}`
+      ? `${escapeHtml(description.slice(0, index))}<strong>${gameTitle}</strong>${escapeHtml(description.slice(index + gameTitle.length))}`
       : escapeHtml(description);
   });
 
