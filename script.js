@@ -81,7 +81,7 @@ const translations = {
     },
     about: {
       title: "About the Developer",
-      description1: "I'm developing Project Zarya on my own under the name Benzeji Games. I share progress here as the game takes shape.",
+      description1: "I'm an independent developer. Game development started as a hobby for me, but over time it became a project I devote all my free time to after my day job. Project Zarya is my attempt to make the survival game I've always wanted to play.",
       gameDesigner: "Game Designer",
       joinUs: "Want to join me?",
       joinUsDescription: "If you'd like to help with Project Zarya, send me a message. This is voluntary, unpaid work.",
@@ -201,7 +201,7 @@ const translations = {
     },
     about: {
       title: "О разработчике",
-      description1: "Я разрабатываю Project Zarya самостоятельно под именем Benzeji Games. Здесь рассказываю, как продвигается работа над игрой.",
+      description1: "Я независимый разработчик. Когда-то разработка игр была для меня просто увлечением, а со временем превратилась в проект, которому я посвящаю всё свободное время после основной работы. Project Zarya - моя попытка создать именно ту игру о выживании, в которую я сам хотел бы играть.",
       gameDesigner: "Геймдизайнер",
       joinUs: "Хотите присоединиться?",
       joinUsDescription: "Если хотите помочь с Project Zarya, напишите мне. Участие добровольное и без оплаты.",
