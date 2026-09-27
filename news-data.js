@@ -1,4 +1,4 @@
-window.YAKUTSK_NEWS = {
+window.BENZEJI_NEWS = {
   en: [
     {
       id: 2,

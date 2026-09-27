@@ -12,6 +12,3 @@ Allow: /
 
 User-agent: *
 Allow: /
-
-Sitemap: https://yakutskgames.com/sitemap.xml
-Sitemap: https://yakutskgames.ru/sitemap.xml

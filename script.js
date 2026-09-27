@@ -6,26 +6,17 @@ const STORAGE_KEY = "benzeji-games-cookie-consent";
 const LOCALE_STORAGE_KEY = "benzeji-games-locale";
 
 class BrandingManager {
-  constructor(name, markPath) {
-    this.name = name;
+  constructor(markPath) {
     this.markPath = markPath;
   }
 
   apply() {
-    document.title = document.title.replaceAll("Yakutsk Games", this.name);
     document.querySelectorAll('link[rel="icon"]').forEach((icon) => { icon.href = this.markPath; });
     document.querySelectorAll('a[href^="mailto:"]').forEach((link) => {
       const subject = new URL(link.href).search;
       link.href = `mailto:${CONTACT_EMAIL}${subject}`;
       if (link.textContent.trim().includes("@")) link.textContent = CONTACT_EMAIL;
     });
-    document.querySelectorAll(".brand").forEach((brand) => {
-      const image = brand.querySelector("img");
-      image?.remove();
-      const label = brand.querySelector("span");
-      if (label) label.innerHTML = `Benzeji <span class="accent">Games</span>`;
-    });
-
     const socialLinks = {
       youtube: "https://www.youtube.com/@BenzejiGames",
       twitter: "https://x.com/benzejiGames",
@@ -34,12 +25,6 @@ class BrandingManager {
       discord: "https://discord.gg/ThkzJvhSUg",
       steam: STEAM_DEVELOPER_URL,
     };
-    document.querySelectorAll(".social.email").forEach((link) => {
-      link.classList.replace("email", "telegram");
-    });
-    document.querySelectorAll(".social.boosty").forEach((link) => {
-      link.classList.replace("boosty", "telegram");
-    });
     Object.entries(socialLinks).forEach(([network, url]) => {
       document.querySelectorAll(`.social.${network}`).forEach((link) => {
         link.href = url;
@@ -52,7 +37,7 @@ class BrandingManager {
 
 const translations = {
   en: {
-    nav: { home: "Home", games: "Our Games", news: "News", about: "About Me" },
+    nav: { home: "Home", games: "Games", news: "News", about: "About Me" },
     donate: {
       button: "Donate",
       title: "Donate",
@@ -68,7 +53,7 @@ const translations = {
       close: "Close",
       kicker: "SUPPORT PROJECT ZARYA",
       fundraiserTitle: "Help Fund Full‑Time Development",
-      fundraiserDescription: "Every contribution helps me spend more time developing the game and bringing Project Zarya to life.",
+      fundraiserDescription: "Support helps me set aside more time to work on Project Zarya.",
       raised: "$70 raised",
       goal: "Goal: $24,000",
       progress: "0.3% funded",
@@ -78,14 +63,14 @@ const translations = {
       wishlist: "Add to your wishlist",
     },
     games: {
-      title: "Our Games",
-      subtitle: "Here's some of our latest and most precious games.",
+      title: "Games",
+      subtitle: "Games I'm working on.",
       comingSoon: "Coming Soon",
       viewAll: "View all",
     },
     news: {
       title: "LATEST NEWS",
-      subtitle: "All the latest news direct from the source... us!",
+      subtitle: "Notes and updates from Project Zarya's development.",
       indexTitle: "News",
       indexSubtitle: "Updates, announcements, and development notes.",
       viewAll: "All posts",
@@ -96,11 +81,11 @@ const translations = {
     },
     about: {
       title: "About the Developer",
-      description1: "I'm a solo indie game developer working under the name Benzeji Games. I develop my games independently, preserving my creative vision without unnecessary compromises.",
+      description1: "I'm developing Project Zarya on my own under the name Benzeji Games. I share progress here as the game takes shape.",
       gameDesigner: "Game Designer",
       joinUs: "Want to join me?",
-      joinUsDescription: "Want to help develop the project? I'd be glad to collaborate. Participation is voluntary and unpaid.",
-      careers: "Join the Team",
+      joinUsDescription: "If you'd like to help with Project Zarya, send me a message. This is voluntary, unpaid work.",
+      careers: "Help with Project Zarya",
     },
     footer: {
       copyright: "© Benzeji Games {year} all rights reserved",
@@ -112,19 +97,19 @@ const translations = {
       discord: "Discord",
       steam: "Steam",
       email: "Email",
-      careers: "Join the Team",
+      careers: "Help with Project Zarya",
       contact: "Contact",
       privacyPolicy: "Privacy Policy",
     },
     cookies: {
-      title: "We use cookies",
+      title: "This site uses cookies",
       description: "Cookies help the website work correctly and improve the user experience. You can accept or decline optional cookies.",
       decline: "Decline",
       accept: "Accept",
     },
     contact: {
       title: "Contact Me",
-      subtitle: "Have a question, partnership idea, or press inquiry? I'd love to hear from you.",
+      subtitle: "Questions about Project Zarya, press requests, or ideas for working together? Send me a message.",
       name: "Name",
       namePlaceholder: "Your name",
       email: "Email",
@@ -132,47 +117,47 @@ const translations = {
       subject: "Subject",
       subjectPlaceholder: "What is this about?",
       message: "Message",
-      messagePlaceholder: "Tell us more...",
+      messagePlaceholder: "Your message...",
       send: "Send Message",
       sending: "Sending...",
       thanks: "Thanks!",
-      thanksMessage: "Your message has been sent. We'll get back to you soon.",
+      thanksMessage: "Your message has been sent. I'll reply when I can.",
       close: "Close",
       orEmail: "Or email me directly at",
     },
     careers: {
-      title: "Join the Team",
-      subtitle: "I'm looking for people who want to help develop the game. Participation is voluntary and unpaid.",
-      invitation: "Tell me a little about yourself and share links to your work. If there's a match, I'll get in touch.",
+      title: "Help with Project Zarya",
+      subtitle: "I develop Project Zarya on my own and welcome people who want to contribute. This is voluntary, unpaid work.",
+      invitation: "Tell me what you'd like to work on and show me something you've made. I'll get back to you if there's a way to work together.",
       contactForm: "Contact form",
       whatToInclude: "What to include",
-      role: "Role you're aiming for (art / design / engineering / production).",
-      links: "Links to portfolio, GitHub, Steam projects, or playable builds.",
-      timezone: "Your timezone and availability.",
+      role: "What you'd like to help with.",
+      links: "A link to your work, if you have one.",
+      timezone: "How much time you can spend on the project.",
     },
     press: {
       title: "Press Kit",
-      subtitle: "Need developer info, logos, screenshots, or trailers? Reach out and we'll send the latest press materials.",
+      subtitle: "Need information or media for a story about Project Zarya? Write to me with what you're looking for.",
       request: "Request press materials",
-      emailUs: "Email us",
+      emailUs: "Email me",
       mediaInquiries: "Media / inquiries",
     },
     privacy: {
       title: "Privacy Policy",
       subtitle: "How Benzeji Games handles information on this website.",
       updated: "Last updated: May 31, 2026",
-      contact: "For privacy questions, contact us at",
+      contact: "For privacy questions, email me at",
       sections: [
-        ["Information we collect", ["We do not use advertising trackers or analytics tools on this website.", "If you contact us through the contact form, we receive the information you choose to submit, such as your name, email address, subject, and message.", "If you email us directly, we receive your email address and the content of your message."]],
-        ["How we use information", ["We use submitted information only to reply to your message, handle press or partnership requests, and review career inquiries.", "We do not sell personal information."]],
+        ["Information I collect", ["I do not use advertising trackers or analytics tools on this website.", "If you use the contact form, I receive the information you submit, such as your name, email address, subject, and message.", "If you email me directly, I receive your email address and the content of your message."]],
+        ["How I use information", ["I use submitted information only to reply to messages and handle press, collaboration, or volunteer inquiries.", "I do not sell personal information."]],
         ["Cookies and local storage", ["The website may save your cookie banner choice in your browser's local storage so the banner does not appear every time you visit.", "This preference is stored on your device and is used only for the website interface."]],
-        ["Third-party services", ["The contact form is processed through Formspree, which may handle the information you submit so it can be delivered to us.", "Links to external platforms such as Steam, YouTube, X, TikTok, and Discord open third-party websites. Their own privacy policies apply when you use those services."]],
-        ["Your choices", ["You can choose not to submit the contact form and contact us by email instead.", "You can clear this website's local storage in your browser settings to reset the cookie banner choice.", "You can ask us to delete messages or personal information you previously sent to us, unless we need to keep it for legitimate business or legal reasons."]],
+        ["Third-party services", ["The contact form uses Formspree, which may process the information you submit so the message reaches me.", "Links to external platforms such as Steam, YouTube, X, TikTok, and Discord open third-party websites. Their own privacy policies apply when you use those services."]],
+        ["Your choices", ["You can email me instead of using the contact form.", "You can clear this website's local storage in your browser settings to reset the cookie banner choice.", "You can ask me to delete messages or personal information you previously sent, unless I need to keep it for legitimate business or legal reasons."]],
       ],
     },
   },
   ru: {
-    nav: { home: "Главная", games: "Наши игры", news: "Новости", about: "Обо мне" },
+    nav: { home: "Главная", games: "Игры", news: "Новости", about: "Обо мне" },
     donate: {
       button: "Donate",
       title: "Поддержать",
@@ -188,7 +173,7 @@ const translations = {
       close: "Закрыть",
       kicker: "ПОДДЕРЖАТЬ PROJECT ZARYA",
       fundraiserTitle: "Сбор на фулл-тайм разработку игры",
-      fundraiserDescription: "Каждый вклад помогает мне уделять больше времени разработке и воплощать Project Zarya в жизнь.",
+      fundraiserDescription: "Поддержка помогает мне выделять больше времени на разработку Project Zarya.",
       raised: "Собрано 6 100 ₽",
       goal: "Цель: 2 078 057 ₽",
       progress: "Собрано 0,3%",
@@ -198,14 +183,14 @@ const translations = {
       wishlist: "Добавить в список желаемого",
     },
     games: {
-      title: "Наши игры",
-      subtitle: "Вот некоторые из наших последних и самых ценных игр.",
+      title: "Игры",
+      subtitle: "Игры, над которыми я работаю.",
       comingSoon: "Скоро",
       viewAll: "Смотреть все",
     },
     news: {
       title: "ПОСЛЕДНИЕ НОВОСТИ",
-      subtitle: "Все последние новости напрямую от источника...",
+      subtitle: "Заметки и новости о разработке Project Zarya.",
       indexTitle: "Новости",
       indexSubtitle: "Обновления, анонсы и заметки о разработке.",
       viewAll: "Все посты",
@@ -216,11 +201,11 @@ const translations = {
     },
     about: {
       title: "О разработчике",
-      description1: "Я независимый разработчик игр, работающий под именем Benzeji Games. Я создаю игры самостоятельно, сохраняя своё творческое видение без лишних компромиссов.",
+      description1: "Я разрабатываю Project Zarya самостоятельно под именем Benzeji Games. Здесь рассказываю, как продвигается работа над игрой.",
       gameDesigner: "Геймдизайнер",
       joinUs: "Хотите присоединиться?",
-      joinUsDescription: "Хотите помочь с развитием проекта? Буду рад сотрудничеству. Участие — на энтузиазме, добровольное и без оплаты.",
-      careers: "Стать частью команды",
+      joinUsDescription: "Если хотите помочь с Project Zarya, напишите мне. Участие добровольное и без оплаты.",
+      careers: "Помочь Project Zarya",
     },
     footer: {
       copyright: "© Benzeji Games {year} все права защищены",
@@ -232,19 +217,19 @@ const translations = {
       discord: "Discord",
       steam: "Steam",
       email: "Email",
-      careers: "Стать частью команды",
+      careers: "Помочь Project Zarya",
       contact: "Контакты",
       privacyPolicy: "Политика конфиденциальности",
     },
     cookies: {
-      title: "Мы используем cookies",
+      title: "На сайте используются cookies",
       description: "Cookies помогают сайту работать корректно и улучшают пользовательский опыт. Вы можете принять или отклонить необязательные cookies.",
       decline: "Отклонить",
       accept: "Принять",
     },
     contact: {
       title: "Свяжитесь со мной",
-      subtitle: "Есть вопрос, идея сотрудничества или запрос от прессы? Я буду рад услышать вас.",
+      subtitle: "Вопрос о Project Zarya, запрос от прессы или идея сотрудничества? Напишите мне.",
       name: "Имя",
       namePlaceholder: "Ваше имя",
       email: "Электронная почта",
@@ -252,42 +237,42 @@ const translations = {
       subject: "Тема",
       subjectPlaceholder: "О чем это?",
       message: "Сообщение",
-      messagePlaceholder: "Расскажите подробнее...",
+      messagePlaceholder: "Ваше сообщение...",
       send: "Отправить сообщение",
       sending: "Отправка...",
       thanks: "Спасибо!",
-      thanksMessage: "Ваше сообщение отправлено. Мы свяжемся с вами в ближайшее время.",
+      thanksMessage: "Сообщение отправлено. Я отвечу, когда смогу.",
       close: "Закрыть",
       orEmail: "Или напишите мне напрямую",
     },
     careers: {
-      title: "Стать частью команды",
-      subtitle: "Ищу единомышленников, которые хотят помочь с разработкой игры. Участие добровольное и без оплаты.",
-      invitation: "Расскажите немного о себе и пришлите ссылки на свои работы. Если мы подойдём друг другу, я свяжусь с вами.",
+      title: "Помочь с Project Zarya",
+      subtitle: "Я разрабатываю Project Zarya самостоятельно и открыт к помощи. Участие добровольное и без оплаты.",
+      invitation: "Расскажите, чем хотите заняться, и покажите свои работы. Если получится поработать вместе, я напишу вам.",
       contactForm: "Форма связи",
       whatToInclude: "Что указать",
-      role: "Желаемая роль (арт / дизайн / разработка / продюсирование).",
-      links: "Ссылки на портфолио, GitHub, проекты в Steam или играбельные сборки.",
-      timezone: "Ваш часовой пояс и доступность.",
+      role: "С чем хотите помочь.",
+      links: "Ссылка на ваши работы, если есть.",
+      timezone: "Сколько времени сможете уделять проекту.",
     },
     press: {
       title: "Пресс-кит",
-      subtitle: "Нужна информация о разработчике, логотипы, скриншоты или трейлеры? Свяжитесь со мной, и я отправлю актуальные материалы.",
+      subtitle: "Готовите материал о Project Zarya? Напишите, какая информация или медиафайлы вам нужны.",
       request: "Запросить материалы",
-      emailUs: "Написать нам",
+      emailUs: "Написать мне",
       mediaInquiries: "СМИ / запросы",
     },
     privacy: {
       title: "Политика конфиденциальности",
       subtitle: "Как Benzeji Games обрабатывает информацию на этом сайте.",
       updated: "Обновлено: 31 мая 2026",
-      contact: "По вопросам конфиденциальности напишите нам на",
+      contact: "По вопросам конфиденциальности напишите мне на",
       sections: [
-        ["Какие данные мы собираем", ["Мы не используем рекламные трекеры или инструменты аналитики на этом сайте.", "Если вы пишете нам через контактную форму, мы получаем данные, которые вы сами отправляете: имя, адрес электронной почты, тему и текст сообщения.", "Если вы пишете нам напрямую по email, мы получаем ваш адрес электронной почты и содержание письма."]],
-        ["Как мы используем данные", ["Мы используем отправленную информацию только для ответа на сообщение, обработки запросов от прессы или партнеров и рассмотрения карьерных обращений.", "Мы не продаем персональные данные."]],
+        ["Какие данные я получаю", ["Я не использую на этом сайте рекламные трекеры и инструменты аналитики.", "Если вы пишете через контактную форму, я получаю данные, которые вы отправляете: имя, адрес электронной почты, тему и текст сообщения.", "Если вы пишете мне напрямую по email, я получаю ваш адрес и содержание письма."]],
+        ["Как я использую данные", ["Я использую отправленные данные только для ответа на сообщения и запросы от прессы, обсуждения сотрудничества или помощи с игрой.", "Я не продаю персональные данные."]],
         ["Cookies и localStorage", ["Сайт может сохранить ваш выбор в cookie-плашке в localStorage браузера, чтобы не показывать плашку при каждом посещении.", "Этот выбор хранится на вашем устройстве и используется только для интерфейса сайта."]],
-        ["Сторонние сервисы", ["Контактная форма обрабатывается через Formspree. Этот сервис может обрабатывать отправленные вами данные, чтобы доставить сообщение нам.", "Ссылки на Steam, YouTube, X, TikTok и Discord открывают сторонние сайты. При использовании этих сервисов действуют их собственные политики конфиденциальности."]],
-        ["Ваш выбор", ["Вы можете не отправлять контактную форму и написать нам напрямую по email.", "Вы можете очистить localStorage этого сайта в настройках браузера, чтобы сбросить выбор в cookie-плашке.", "Вы можете попросить нас удалить сообщения или персональные данные, которые вы отправляли ранее, если их хранение не требуется по деловым или юридическим причинам."]],
+        ["Сторонние сервисы", ["Контактная форма работает через Formspree. Сервис может обрабатывать отправленные вами данные, чтобы доставить сообщение мне.", "Ссылки на Steam, YouTube, X, TikTok и Discord открывают сторонние сайты. При использовании этих сервисов действуют их собственные политики конфиденциальности."]],
+        ["Ваш выбор", ["Вы можете написать мне по email вместо контактной формы.", "Вы можете очистить localStorage этого сайта в настройках браузера, чтобы сбросить выбор в cookie-плашке.", "Вы можете попросить меня удалить сообщения или персональные данные, которые отправляли ранее, если их хранение не требуется по деловым или юридическим причинам."]],
       ],
     },
   },
@@ -354,8 +339,8 @@ class CountryLanguageSuggestion {
     banner.setAttribute("aria-label", locale === "ru" ? "Выбор языка" : "Language preference");
     const message = document.createElement("p");
     message.textContent = locale === "ru"
-      ? "Для вашей страны рекомендуем русский язык. Переключить сайт на русский?"
-      : "We recommend English for your country. Use English?";
+      ? "Для вашего региона доступна русская версия сайта. Переключиться?"
+      : "An English version of this site is available. Switch to English?";
     banner.append(message);
     const choices = locale === "ru"
       ? [["ru", "Да, русский"], ["en", "Keep English"]]
@@ -675,7 +660,7 @@ function mediaUrl(media, size = "medium") {
 }
 
 async function getArticles(locale) {
-  const localArticles = window.YAKUTSK_NEWS?.[locale];
+  const localArticles = window.BENZEJI_NEWS?.[locale];
   if (Array.isArray(localArticles) && localArticles.length) {
     return localArticles;
   }
@@ -867,7 +852,7 @@ function escapeHtml(value) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  new BrandingManager("Benzeji Games", "/assets/benzeji-mark.svg").apply();
+  new BrandingManager("/assets/benzeji-mark.svg").apply();
   ensureDonateLinks();
   initLocale();
   initSocialIcons();
