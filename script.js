@@ -54,9 +54,9 @@ const translations = {
       kicker: "SUPPORT PROJECT ZARYA",
       fundraiserTitle: "Help Fund Full‑Time Development",
       fundraiserDescription: "Support helps me set aside more time to work on Project Zarya.",
-      raised: "$70 raised",
+      raised: "$86 raised",
       goal: "Goal: $24,000",
-      progress: "0.3% funded",
+      progress: "0.4% funded",
     },
     hero: {
       description: "Open-world survival in post-apocalyptic Russia. Explore, gather resources, build, craft, and fight the infected alone or with friends.",
@@ -174,9 +174,9 @@ const translations = {
       kicker: "ПОДДЕРЖАТЬ PROJECT ZARYA",
       fundraiserTitle: "Сбор на фулл-тайм разработку игры",
       fundraiserDescription: "Поддержка помогает мне выделять больше времени на разработку Project Zarya.",
-      raised: "Собрано 6 100 ₽",
+      raised: "Собрано 7 485 ₽",
       goal: "Цель: 2 078 057 ₽",
-      progress: "Собрано 0,3%",
+      progress: "Собрано 0,4%",
     },
     hero: {
       description: "Выживание в открытом мире постапокалиптической России. Исследуйте, собирайте ресурсы, стройте, создавайте снаряжение и сражайтесь с заражёнными в одиночку или с друзьями.",
