@@ -8,6 +8,8 @@ const port = Number(process.env.PORT || 3000);
 const host = process.env.HOST || "127.0.0.1";
 
 const types = {
+  ".wav": "audio/wav",
+  ".json": "application/json; charset=utf-8",
   ".css": "text/css; charset=utf-8",
   ".js": "text/javascript; charset=utf-8",
   ".html": "text/html; charset=utf-8",
@@ -33,7 +35,7 @@ function resolvePath(urlPath) {
 createServer((request, response) => {
   const filePath = resolvePath(request.url || "/");
   const type = types[extname(filePath)] || "application/octet-stream";
-  response.writeHead(200, { "Content-Type": type, "Cache-Control": "no-store" });
+  response.writeHead(200, { "Content-Type": type, "Content-Length": statSync(filePath).size, "Cache-Control": "no-store" });
   createReadStream(filePath).pipe(response);
 }).listen(port, host, () => {
   console.log(`Static site running at http://${host}:${port}`);
