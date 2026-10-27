@@ -24,7 +24,7 @@ function render() {
     const text = `!tts ${voice.id}`;
     const copy = element('button', 'copy', '⧉'); copy.type = 'button'; copy.dataset.copy = text; copy.setAttribute('aria-label', `Скопировать ${text}`);
     command.append(element('code', '', text), copy);
-    const audio = element('audio'); audio.controls = true; audio.preload = 'none'; audio.src = voice.audio; audio.setAttribute('aria-label', `Образец голоса ${voice.name}`);
+    const audio = element('audio'); audio.controls = true; audio.preload = 'metadata'; audio.src = voice.audio; audio.setAttribute('aria-label', `Образец голоса ${voice.name}`);
     audio.addEventListener('play', () => document.querySelectorAll('audio').forEach(other => { if (other !== audio) other.pause(); }));
     card.append(top, command, audio); list.append(card);
   }
@@ -37,7 +37,7 @@ async function load() {
     const response = await fetch('voices.json', { cache: 'no-cache' });
     if (!response.ok) throw new Error('HTTP ' + response.status);
     const data = await response.json();
-    if (!Array.isArray(data) || data.some(v => !/^[a-z0-9][a-z0-9_-]{0,39}$/.test(v.id) || typeof v.name !== 'string' || typeof v.category !== 'string' || v.audio !== `audio/${v.id}.wav`)) throw new Error('Invalid catalog');
+    if (!Array.isArray(data) || data.some(v => !/^[a-z0-9][a-z0-9_-]{0,39}$/.test(v.id) || typeof v.name !== 'string' || typeof v.category !== 'string' || !new RegExp(`^audio/${v.id}\\.wav\\?v=[a-f0-9]{12}$`).test(v.audio))) throw new Error('Invalid catalog');
     voices = data;
     category.replaceChildren(new Option('Все категории', ''));
     [...new Set(voices.map(v => v.category))].sort().forEach(value => category.add(new Option(value, value)));

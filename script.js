@@ -37,7 +37,7 @@ class BrandingManager {
 
 const translations = {
   en: {
-    nav: { home: "Home", games: "Games", news: "News", about: "About Me", tts: "TTS Voices" },
+    nav: { home: "Home", games: "Games", news: "News", about: "About Me" },
     donate: {
       button: "Donate",
       title: "Donate",
@@ -157,7 +157,7 @@ const translations = {
     },
   },
   ru: {
-    nav: { home: "Главная", games: "Игры", news: "Новости", about: "Обо мне", tts: "Голоса TTS" },
+    nav: { home: "Главная", games: "Игры", news: "Новости", about: "Обо мне" },
     donate: {
       button: "Donate",
       title: "Поддержать",
