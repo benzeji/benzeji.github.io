@@ -425,7 +425,6 @@ function initLocale() {
   langUrl.searchParams.set("lang", targetLocale);
   setAttr(".lang-switch", "href", langUrl.pathname + langUrl.search + langUrl.hash);
   setAttr(".lang-switch", "title", targetLocale === "ru" ? "Русская версия" : "English version");
-  setAttr("[data-fundraiser-progress]", "aria-label", t.donate.progress);
 
   document.querySelectorAll("[data-local-link]").forEach((el) => {
     const localPath = el.getAttribute("data-local-link");
