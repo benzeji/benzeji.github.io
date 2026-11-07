@@ -45,6 +45,7 @@ const translations = {
       cloudtips: "Donate with a bank card",
       boosty: "Donate with Visa, Mastercard or MIR",
       patreon: "Monthly support on Patreon",
+      boostyLink: "Subscribe or donate on Boosty",
       crypto: "Cryptocurrency transfer",
       network: "Network",
       addressLabel: "USDT Address",
@@ -166,6 +167,7 @@ const translations = {
       cloudtips: "Поддержать банковской картой",
       boosty: "Поддержать картой Visa, Mastercard или МИР",
       patreon: "Ежемесячная поддержка на Patreon",
+      boostyLink: "Подписка или разовый донат на Boosty",
       crypto: "Перевод в криптовалюте",
       network: "Сеть",
       addressLabel: "USDT Address",
@@ -745,6 +747,7 @@ function blockToHtml(block) {
           <a href="https://pay.cloudtips.ru/p/be187661" target="_blank" rel="noopener noreferrer"><strong>CloudTips</strong><span>${escapeHtml(options.cloudtips)}</span><b aria-hidden="true">↗</b></a>
           <a href="https://www.donationalerts.com/r/benzejigames" target="_blank" rel="noopener noreferrer"><strong>DonationAlerts</strong><span>${escapeHtml(options.boosty)}</span><b aria-hidden="true">↗</b></a>
           <a href="https://www.patreon.com/BenzejiGames" target="_blank" rel="noopener noreferrer"><strong>Patreon</strong><span>${escapeHtml(options.patreon || "Patreon")}</span><b aria-hidden="true">↗</b></a>
+          <a href="https://boosty.to/benzejigames" target="_blank" rel="noopener noreferrer"><strong>Boosty</strong><span>${escapeHtml(options.boostyLink || "Boosty")}</span><b aria-hidden="true">↗</b></a>
           <div class="post-crypto-option">
             <div class="crypto-payment-layout">
               <img class="crypto-qr" src="/assets/project-zarya-usdt-trc20-qr.png" alt="QR code for the USDT TRC20 address">
@@ -788,7 +791,8 @@ function blockToHtml(block) {
   }
   const body = typeof block.body === "string" ? block.body : block.text || "";
   if (!body) return "";
-  return body
+  const bodyTitle = block.title ? `<h2>${escapeHtml(block.title)}</h2>` : "";
+  return bodyTitle + body
     .split(/\n{2,}/)
     .map((paragraph) => `<p>${inlineMarkdown(escapeHtml(paragraph.trim()))}</p>`)
     .join("");
