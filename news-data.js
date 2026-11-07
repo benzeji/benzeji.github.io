@@ -1,120 +1,70 @@
 window.BENZEJI_NEWS = {
   en: [
     {
-      id: 2,
-      displayOrder: 3,
-      title: "Inventory System 0.0.38",
-      slug: "inventory-system-showcase-0-0-38",
-      category: "update",
-      description: "Inventory System Showcase — a look at the inventory mechanics in Project Zarya.",
-      publishedAt: "2026-08-16T10:00:00.000Z",
+      id: 4,
+      displayOrder: 1,
+      title: "Project Zarya is on Steam",
+      slug: "project-zarya-steam-page",
+      category: "announcement",
+      description: "The Project Zarya store page is live on Steam. Add the game to your wishlist!",
+      publishedAt: "2026-11-07T12:00:00.000Z",
       cover: {
-        url: "https://img.youtube.com/vi/DAu447ViJ-U/maxresdefault.jpg",
-        alternativeText: "Project Zarya inventory system showcase",
+        url: "/assets/project-zarya-key-art.png",
+        alternativeText: "Project Zarya key art",
       },
       blocks: [
         {
-          body: "Take a closer look at the inventory system in Project Zarya version 0.0.38.",
+          body: "Hey **Survivors**! Project Zarya now has its own page on [Steam](https://store.steampowered.com/app/3921280/Project_Zarya/).",
         },
         {
-          youtubeId: "DAu447ViJ-U",
-          title: "Project Zarya — Inventory System Showcase",
+          body: "Project Zarya is an open-world adventure set in post-apocalyptic Russia, where every day is a fight for survival. Explore, gather resources, build shelters, craft equipment, and battle the infected alone or with friends.",
         },
         {
-          body: "Read the full announcement on [Steam](https://store.steampowered.com/news/app/3921280/view/688639887345192053?snr=1_5_9_).",
-        },
-      ],
-    },
-    {
-      id: 3,
-      displayOrder: 2,
-      title: "Food Freshness & Spoilage System 0.0.39",
-      slug: "food-freshness-spoilage-system-0-0-39",
-      category: "update",
-      description: "Food now expires, refrigerators extend shelf life, and spoiled meals can cause food poisoning.",
-      publishedAt: "2026-08-25T12:00:00.000Z",
-      cover: {
-        url: "https://img.youtube.com/vi/rfK-uWmnSWs/maxresdefault.jpg",
-        alternativeText: "Project Zarya food freshness and spoilage system showcase",
-      },
-      blocks: [
-        {
-          body: "Hey **Survivors**! I’m continuing to work on my survival game. I decided that being able to carry an endless supply of food in your pockets was basically cheating, so I added a food freshness system.",
-        },
-        {
-          title: "What’s new:",
+          title: "What awaits you:",
           items: [
-            "**Expiration dates:** Perishable food now has a timer. If you don’t eat it in time, it turns into rotten food right in your inventory.",
-            "**Refrigerator:** The fridge doubles the shelf life of food. You still have to keep an eye on your supplies, but the refrigerator lets you store perishable food for significantly longer.",
-            "**Food poisoning and vomiting:** If you eat spoiled food out of desperation (or carelessness), your character gets debuffs, loses health/thirst, and visibly empties their stomach with a corresponding animation and sound.",
+            "**Open world:** explore an abandoned city and uncover its story through notes and documents.",
+            "**Survival:** scavenge for resources, manage your supplies, and race against time.",
+            "**Building and crafting:** set up shelters and create your own equipment.",
+            "**Co-op:** survive alone or together with friends.",
           ],
         },
         {
-          youtubeId: "rfK-uWmnSWs",
-          title: "Project Zarya — Food Freshness & Spoilage System 0.0.39",
-        },
-        {
-          body: "Read the full announcement on [Steam](https://store.steampowered.com/news/app/3921280/view/687514622514693594?snr=1_5_9_).",
+          body: "The game is planned to launch in Early Access in **August 2027**. Add Project Zarya to your [Steam wishlist](https://store.steampowered.com/app/3921280/Project_Zarya/) so you don't miss the release — it really helps the project!",
         },
       ],
     },
   ],
   ru: [
     {
-      id: 2,
-      displayOrder: 3,
-      title: "Inventory System 0.0.38",
-      slug: "inventory-system-showcase-0-0-38",
-      category: "update",
-      description: "Inventory System Showcase — демонстрация механики инвентаря в Project Zarya.",
-      publishedAt: "2026-08-16T10:00:00.000Z",
+      id: 4,
+      displayOrder: 1,
+      title: "Project Zarya в Steam",
+      slug: "project-zarya-steam-page",
+      category: "announcement",
+      description: "Страница Project Zarya открыта в Steam. Добавляйте игру в список желаемого!",
+      publishedAt: "2026-11-07T12:00:00.000Z",
       cover: {
-        url: "https://img.youtube.com/vi/DAu447ViJ-U/maxresdefault.jpg",
-        alternativeText: "Демонстрация системы инвентаря Project Zarya",
+        url: "/assets/project-zarya-key-art.png",
+        alternativeText: "Ключевой арт Project Zarya",
       },
       blocks: [
         {
-          body: "Подробная демонстрация системы инвентаря в версии Project Zarya 0.0.38.",
+          body: "Привет, **выжившие**! У Project Zarya появилась собственная страница в [Steam](https://store.steampowered.com/app/3921280/Project_Zarya/).",
         },
         {
-          youtubeId: "DAu447ViJ-U",
-          title: "Project Zarya — Inventory System Showcase",
+          body: "Project Zarya — открытый мир постапокалиптической России, где каждый день становится борьбой за жизнь. Исследуйте, добывайте ресурсы, стройте убежища, создавайте снаряжение и сражайтесь с заражёнными в одиночку или с друзьями.",
         },
         {
-          body: "Полная публикация доступна в [Steam](https://store.steampowered.com/news/app/3921280/view/688639887345192053?snr=1_5_9_).",
-        },
-      ],
-    },
-    {
-      id: 3,
-      displayOrder: 2,
-      title: "Система свежести и порчи еды 0.0.39",
-      slug: "food-freshness-spoilage-system-0-0-39",
-      category: "update",
-      description: "Еда теперь портится, холодильник продлевает срок хранения, а испорченная пища вызывает отравление.",
-      publishedAt: "2026-08-25T12:00:00.000Z",
-      cover: {
-        url: "https://img.youtube.com/vi/rfK-uWmnSWs/maxresdefault.jpg",
-        alternativeText: "Демонстрация системы свежести и порчи еды в Project Zarya",
-      },
-      blocks: [
-        {
-          body: "Привет, **выжившие**! Я продолжаю работать над своей игрой о выживании. Возможность носить в карманах бесконечный запас еды была практически читерством, поэтому я добавил систему свежести продуктов.",
-        },
-        {
-          title: "Что нового:",
+          title: "Что вас ждёт:",
           items: [
-            "**Срок годности:** У скоропортящейся еды теперь есть таймер. Если не съесть её вовремя, она превратится в испорченную прямо в инвентаре.",
-            "**Холодильник:** Холодильник вдвое увеличивает срок хранения еды. Следить за запасами всё ещё необходимо, но скоропортящиеся продукты можно хранить значительно дольше.",
-            "**Пищевое отравление и рвота:** Если съесть испорченную еду, персонаж получит отрицательные эффекты, потеряет здоровье и жажду, а также опустошит желудок с соответствующей анимацией и звуком.",
+            "**Открытый мир:** исследуйте заброшенный город и узнавайте его историю из записок и документов.",
+            "**Выживание:** добывайте ресурсы, следите за припасами и боритесь со временем.",
+            "**Строительство и крафт:** обустраивайте убежища и создавайте собственное снаряжение.",
+            "**Кооператив:** выживайте в одиночку или вместе с друзьями.",
           ],
         },
         {
-          youtubeId: "rfK-uWmnSWs",
-          title: "Project Zarya — Система свежести и порчи еды 0.0.39",
-        },
-        {
-          body: "Полная публикация доступна в [Steam](https://store.steampowered.com/news/app/3921280/view/687514622514693594?snr=1_5_9_).",
+          body: "Выход в раннем доступе запланирован на **август 2027 года**. Добавьте Project Zarya в [список желаемого в Steam](https://store.steampowered.com/app/3921280/Project_Zarya/), чтобы не пропустить релиз — это очень помогает проекту!",
         },
       ],
     },

@@ -44,6 +44,7 @@ const translations = {
       description: "Choose a convenient way to support Benzeji Games.",
       cloudtips: "Donate with a bank card",
       boosty: "Donate with Visa, Mastercard or MIR",
+      patreon: "Monthly support on Patreon",
       crypto: "Cryptocurrency transfer",
       network: "Network",
       addressLabel: "USDT Address",
@@ -51,9 +52,9 @@ const translations = {
       copied: "Address copied",
       copyError: "Could not copy the address",
       close: "Close",
-      kicker: "SUPPORT PROJECT ZARYA",
-      fundraiserTitle: "Help Fund Full‑Time Development",
-      fundraiserDescription: "Support helps me set aside more time to work on Project Zarya.",
+      kicker: "SUPPORT MY WORK",
+      fundraiserTitle: "Help Fund Full‑Time Game Development",
+      fundraiserDescription: "Your support will help me leave my day job and make games full-time.",
       raised: "$86 raised",
       goal: "Goal: $24,000",
       progress: "0.4% funded",
@@ -81,11 +82,11 @@ const translations = {
     },
     about: {
       title: "About the Developer",
-      description1: "I'm an independent developer. Game development started as a hobby for me, but over time it became a project I devote all my free time to after my day job. Project Zarya is my attempt to make the survival game I've always wanted to play.",
+      description1: "I'm an independent developer. Game development started as a hobby for me, but over time it became something I devote all my free time to after my day job. I want to make the kind of games I'd love to play myself.",
       gameDesigner: "Game Designer",
       joinUs: "Want to join me?",
-      joinUsDescription: "If you'd like to help with Project Zarya, send me a message. This is voluntary, unpaid work.",
-      careers: "Help with Project Zarya",
+      joinUsDescription: "If you'd like to help make games with me, send me a message. This is voluntary, unpaid work.",
+      careers: "Join the Team",
     },
     footer: {
       copyright: "© Benzeji Games {year} all rights reserved",
@@ -97,7 +98,7 @@ const translations = {
       discord: "Discord",
       steam: "Steam",
       email: "Email",
-      careers: "Help with Project Zarya",
+      careers: "Join the Team",
       contact: "Contact",
       privacyPolicy: "Privacy Policy",
     },
@@ -126,14 +127,14 @@ const translations = {
       orEmail: "Or email me directly at",
     },
     careers: {
-      title: "Help with Project Zarya",
-      subtitle: "I develop Project Zarya on my own and welcome people who want to contribute. This is voluntary, unpaid work.",
-      invitation: "Tell me what you'd like to work on and show me something you've made. I'll get back to you if there's a way to work together.",
+      title: "Join the Team",
+      subtitle: "Benzeji Games is a small indie studio, and I'm looking for like-minded people who want to make games together. This is voluntary, unpaid work.",
+      invitation: "Tell me about yourself and your skills, and show me your work. If we're a good fit, I'll get in touch.",
       contactForm: "Contact form",
       whatToInclude: "What to include",
-      role: "What you'd like to help with.",
+      role: "Your role: programmer, artist, designer, sound designer, etc.",
       links: "A link to your work, if you have one.",
-      timezone: "How much time you can spend on the project.",
+      timezone: "How much time you can dedicate to the team.",
     },
     press: {
       title: "Press Kit",
@@ -164,6 +165,7 @@ const translations = {
       description: "Выберите удобный способ поддержать Benzeji Games.",
       cloudtips: "Поддержать банковской картой",
       boosty: "Поддержать картой Visa, Mastercard или МИР",
+      patreon: "Ежемесячная поддержка на Patreon",
       crypto: "Перевод в криптовалюте",
       network: "Сеть",
       addressLabel: "USDT Address",
@@ -171,9 +173,9 @@ const translations = {
       copied: "Адрес скопирован",
       copyError: "Не удалось скопировать адрес",
       close: "Закрыть",
-      kicker: "ПОДДЕРЖАТЬ PROJECT ZARYA",
-      fundraiserTitle: "Сбор на фулл-тайм разработку игры",
-      fundraiserDescription: "Поддержка помогает мне выделять больше времени на разработку Project Zarya.",
+      kicker: "ПОДДЕРЖАТЬ РАЗРАБОТКУ",
+      fundraiserTitle: "Сбор на фулл-тайм разработку игр",
+      fundraiserDescription: "Ваша поддержка поможет мне уйти с основной работы и заниматься разработкой игр на полную ставку.",
       raised: "Собрано 7 485 ₽",
       goal: "Цель: 2 078 057 ₽",
       progress: "Собрано 0,4%",
@@ -201,11 +203,11 @@ const translations = {
     },
     about: {
       title: "О разработчике",
-      description1: "Я независимый разработчик. Когда-то разработка игр была для меня просто увлечением, а со временем превратилась в проект, которому я посвящаю всё свободное время после основной работы. Project Zarya - моя попытка создать именно ту игру о выживании, в которую я сам хотел бы играть.",
+      description1: "Я независимый разработчик. Когда-то разработка игр была для меня просто увлечением, а со временем превратилась в дело, которому я посвящаю всё свободное время после основной работы. Я хочу создавать такие игры, в которые сам хотел бы играть.",
       gameDesigner: "Геймдизайнер",
       joinUs: "Хотите присоединиться?",
-      joinUsDescription: "Если хотите помочь с Project Zarya, напишите мне. Участие добровольное и без оплаты.",
-      careers: "Помочь Project Zarya",
+      joinUsDescription: "Если хотите помогать в разработке игр, напишите мне. Участие добровольное и без оплаты.",
+      careers: "Присоединиться к команде",
     },
     footer: {
       copyright: "© Benzeji Games {year} все права защищены",
@@ -217,7 +219,7 @@ const translations = {
       discord: "Discord",
       steam: "Steam",
       email: "Email",
-      careers: "Помочь Project Zarya",
+      careers: "Присоединиться к команде",
       contact: "Контакты",
       privacyPolicy: "Политика конфиденциальности",
     },
@@ -246,14 +248,14 @@ const translations = {
       orEmail: "Или напишите мне напрямую",
     },
     careers: {
-      title: "Помочь с Project Zarya",
-      subtitle: "Я разрабатываю Project Zarya самостоятельно и открыт к помощи. Участие добровольное и без оплаты.",
-      invitation: "Расскажите, чем хотите заняться, и покажите свои работы. Если получится поработать вместе, я напишу вам.",
+      title: "Присоединиться к команде",
+      subtitle: "Benzeji Games — небольшая инди-студия, и я ищу единомышленников, которые хотят делать игры вместе. Участие добровольное и без оплаты.",
+      invitation: "Расскажите о себе и своих навыках и покажите работы. Если мы подойдём друг другу, я с вами свяжусь.",
       contactForm: "Форма связи",
       whatToInclude: "Что указать",
-      role: "С чем хотите помочь.",
+      role: "Ваша роль: программист, художник, дизайнер, звукорежиссёр и т. д.",
       links: "Ссылка на ваши работы, если есть.",
-      timezone: "Сколько времени сможете уделять проекту.",
+      timezone: "Сколько времени готовы уделять работе в команде.",
     },
     press: {
       title: "Пресс-кит",
@@ -551,18 +553,19 @@ function initSocialIcons() {
     } else {
       twitterLink.insertAdjacentElement("afterend", telegramLink);
     }
-    let vkLink = socials.querySelector(".social.vk");
-    if (!vkLink) {
-      telegramLink.insertAdjacentHTML("afterend", '<a class="social vk" href="https://vk.ru/projectzarya_game" target="_blank" rel="noopener noreferrer" aria-label="VK"><img src="/assets/social/vk.svg" alt=""><span class="tooltip">VK</span></a>');
+    socials.querySelectorAll(".social.vk").forEach((link) => link.remove());
+    let patreonLink = socials.querySelector(".social.patreon");
+    if (!patreonLink) {
+      telegramLink.insertAdjacentHTML("afterend", '<a class="social patreon" href="https://www.patreon.com/BenzejiGames" target="_blank" rel="noopener noreferrer" aria-label="Patreon"><img src="/assets/social/patreon.svg" alt=""><span class="tooltip">Patreon</span></a>');
     } else {
-      telegramLink.insertAdjacentElement("afterend", vkLink);
+      telegramLink.insertAdjacentElement("afterend", patreonLink);
     }
   });
   const icons = {
     youtube: { src: "/assets/social/youtube.svg", label: footer.youtube },
     twitter: { src: "/assets/social/x.svg", label: footer.twitter },
     telegram: { src: "/assets/social/telegram.svg", label: footer.telegram },
-    vk: { src: "/assets/social/vk.svg", label: footer.vk },
+    patreon: { src: "/assets/social/patreon.svg", label: "Patreon" },
     tiktok: { src: "/assets/social/tiktok.svg", label: footer.tiktok },
     discord: { src: "/assets/social/discord.svg", label: footer.discord },
     steam: { src: "/assets/social/steam.svg", label: footer.steam },
@@ -741,6 +744,7 @@ function blockToHtml(block) {
         <div class="post-donation-grid">
           <a href="https://pay.cloudtips.ru/p/be187661" target="_blank" rel="noopener noreferrer"><strong>CloudTips</strong><span>${escapeHtml(options.cloudtips)}</span><b aria-hidden="true">↗</b></a>
           <a href="https://www.donationalerts.com/r/benzejigames" target="_blank" rel="noopener noreferrer"><strong>DonationAlerts</strong><span>${escapeHtml(options.boosty)}</span><b aria-hidden="true">↗</b></a>
+          <a href="https://www.patreon.com/BenzejiGames" target="_blank" rel="noopener noreferrer"><strong>Patreon</strong><span>${escapeHtml(options.patreon || "Patreon")}</span><b aria-hidden="true">↗</b></a>
           <div class="post-crypto-option">
             <div class="crypto-payment-layout">
               <img class="crypto-qr" src="/assets/project-zarya-usdt-trc20-qr.png" alt="QR code for the USDT TRC20 address">

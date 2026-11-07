@@ -1219,7 +1219,8 @@ body.dialog-open {
 }
 
 .cloudtips-option,
-.boosty-option {
+.boosty-option,
+.patreon-option {
   padding-right: 58px;
   transition: border-color 0.18s ease, transform 0.18s ease;
 }
@@ -1227,7 +1228,9 @@ body.dialog-open {
 .cloudtips-option:hover,
 .cloudtips-option:focus-visible,
 .boosty-option:hover,
-.boosty-option:focus-visible {
+.boosty-option:focus-visible,
+.patreon-option:hover,
+.patreon-option:focus-visible {
   border-color: var(--brand-bear);
   transform: translateY(-2px);
 }
@@ -1483,7 +1486,7 @@ body.dialog-open {
 .social.youtube:hover { background: #ff0000; }
 .social.twitter:hover { background: #000000; }
 .social.telegram:hover { background: #229ed9; }
-.social.vk:hover { background: #0077ff; }
+.social.patreon:hover { background: #ff424d; }
 .social.tiktok:hover { background: #000000; }
 .social.discord:hover { background: #5865f2; }
 .social.steam:hover { background: #171d25; }
@@ -2259,10 +2262,6 @@ body .news-card.support-news-card .button {
   }
 }
 
-/* Our Games is temporarily hidden across shared navigation on inner pages. */
-.nav-links li:has(> [data-i18n="nav.games"]) {
-  display: none;
-}
 .language-suggestion {
   display: flex;
   flex-wrap: wrap;
