@@ -20,7 +20,6 @@ class BrandingManager {
     const socialLinks = {
       youtube: "https://www.youtube.com/@BenzejiGames",
       twitter: "https://x.com/benzejiGames",
-      telegram: "https://t.me/BenzejiGames",
       vk: "https://vk.ru/projectzarya_game",
       discord: "https://discord.gg/ThkzJvhSUg",
       steam: STEAM_DEVELOPER_URL,
@@ -93,7 +92,6 @@ const translations = {
       copyright: "© Benzeji Games {year} all rights reserved",
       youtube: "YouTube",
       twitter: "X",
-      telegram: "Telegram",
       vk: "VK",
       tiktok: "TikTok",
       discord: "Discord",
@@ -215,7 +213,6 @@ const translations = {
       copyright: "© Benzeji Games {year} все права защищены",
       youtube: "YouTube",
       twitter: "X",
-      telegram: "Telegram",
       vk: "VK",
       tiktok: "TikTok",
       discord: "Discord",
@@ -548,25 +545,18 @@ function initSocialIcons() {
       console.error("Social links: X link is not assigned.");
       return;
     }
-    let telegramLink = socials.querySelector(".social.telegram");
-    if (!telegramLink) {
-      twitterLink.insertAdjacentHTML("afterend", '<a class="social telegram" href="https://t.me/BenzejiGames" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><img src="/assets/social/telegram.svg" alt=""><span class="tooltip">Telegram</span></a>');
-      telegramLink = socials.querySelector(".social.telegram");
-    } else {
-      twitterLink.insertAdjacentElement("afterend", telegramLink);
-    }
+    socials.querySelectorAll(".social.telegram").forEach((link) => link.remove());
     socials.querySelectorAll(".social.vk").forEach((link) => link.remove());
     let patreonLink = socials.querySelector(".social.patreon");
     if (!patreonLink) {
-      telegramLink.insertAdjacentHTML("afterend", '<a class="social patreon" href="https://www.patreon.com/BenzejiGames" target="_blank" rel="noopener noreferrer" aria-label="Patreon"><img src="/assets/social/patreon.svg" alt=""><span class="tooltip">Patreon</span></a>');
+      twitterLink.insertAdjacentHTML("afterend", '<a class="social patreon" href="https://www.patreon.com/BenzejiGames" target="_blank" rel="noopener noreferrer" aria-label="Patreon"><img src="/assets/social/patreon.svg" alt=""><span class="tooltip">Patreon</span></a>');
     } else {
-      telegramLink.insertAdjacentElement("afterend", patreonLink);
+      twitterLink.insertAdjacentElement("afterend", patreonLink);
     }
   });
   const icons = {
     youtube: { src: "/assets/social/youtube.svg", label: footer.youtube },
     twitter: { src: "/assets/social/x.svg", label: footer.twitter },
-    telegram: { src: "/assets/social/telegram.svg", label: footer.telegram },
     patreon: { src: "/assets/social/patreon.svg", label: "Patreon" },
     tiktok: { src: "/assets/social/tiktok.svg", label: footer.tiktok },
     discord: { src: "/assets/social/discord.svg", label: footer.discord },
